@@ -5,7 +5,7 @@
 
 <svelte:head>
 	<title>Evelin & Matthew</title>
-	<meta name="description" content="wedding2025" />
+	<meta name="description" content="wedding2026" />
 </svelte:head>
 
 

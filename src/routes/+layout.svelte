@@ -13,7 +13,7 @@
     <footer class="footer">
             <div class="footer-content-initials">E&amp;M</div>
             <div class="bar"></div>
-            <div class="footer-content-date">11.22.2025</div>
+            <div class="footer-content-date">11.07.2026</div>
 	</footer>
 </div>
 

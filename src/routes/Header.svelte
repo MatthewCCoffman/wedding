@@ -22,7 +22,7 @@
 	</div>
 			<div class="primary-section">
 			<div class="section-info">
-				<span class="section-date">November 22, 2025</span>
+				<span class="section-date">November 07, 2026</span>
 				<span class="separator">&bull;</span>
 				<span class="section-date">Hgo, Mexico</span>
 			</div>
