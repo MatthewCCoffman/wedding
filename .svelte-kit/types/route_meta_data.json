@@ -1,0 +1,26 @@
+{
+	"/": [
+		"src/routes/+page.ts"
+	],
+	"/faq": [
+		"src/routes/faq/+page.ts"
+	],
+	"/itinerary": [
+		"src/routes/itinerary/+page.ts"
+	],
+	"/our_story": [
+		"src/routes/our_story/+page.ts"
+	],
+	"/photos": [
+		"src/routes/photos/+page.ts"
+	],
+	"/registry": [
+		"src/routes/registry/+page.ts"
+	],
+	"/rsvp": [
+		"src/routes/rsvp/+page.ts"
+	],
+	"/venue": [
+		"src/routes/venue/+page.ts"
+	]
+}
