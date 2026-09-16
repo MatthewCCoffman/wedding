@@ -128,12 +128,12 @@
 		text-transform: uppercase;
 		letter-spacing: 0.12em;
 		color: #ffffff;
-		background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-		border: 2px solid var(--accent-color);
+		background: linear-gradient(135deg, var(--accent-green), var(--accent-green-dark));
+		border: 2px solid var(--accent-green);
 		border-radius: 0.5rem;
 		text-decoration: none;
 		transition: var(--transition-smooth);
-		box-shadow: 0 10px 30px rgba(139, 115, 85, 0.2);
+		box-shadow: 0 10px 30px rgba(139, 155, 126, 0.25);
 		cursor: pointer;
 		position: relative;
 		overflow: hidden;
@@ -159,8 +159,8 @@
 
 	.registry-button:hover {
 		transform: translateY(-3px);
-		box-shadow: 0 15px 40px rgba(139, 115, 85, 0.3);
-		border-color: var(--secondary-color);
+		box-shadow: 0 15px 40px rgba(139, 155, 126, 0.35);
+		border-color: var(--accent-green-dark);
 	}
 
 	.button-text {

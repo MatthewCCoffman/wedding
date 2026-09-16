@@ -121,15 +121,14 @@
 
 /* Timeline Sections */
 .timeline-section {
-  /* border-left: 3px dashed rgba(183, 144, 126, 0.4); soft champagne dashed line */
   padding: 2rem;
-  background:rgb(255, 255, 255); 
+  background: var(--background-color);
   border-radius: 1rem;
   box-shadow: 0 6px 15px rgba(211, 211, 211, 0.4);
   transition: background 0.3s ease;
 }
 .timeline-section:hover {
-  background:rgb(255, 255, 255);
+  background: var(--background-color);
 }
 
 /* Section Header */

@@ -6,13 +6,16 @@
 	--font-accent: 'Montserrat', sans-serif;
 	--font-mono: 'Fira Mono', monospace;
 	
-	/* Elegant Color Palette */
+	/* Elegant Color Palette with Green Accents */
 	--background-color: #fdfbf7;
 	--primary-color: #2c2c2c;
 	--secondary-color: #8b7355;
 	--tertiary-color: #d4c5b9;
 	--accent-color: #b89968;
 	--accent-light: #e8dfd5;
+	--accent-green: #8b9b7e;
+	--accent-green-light: #a8b89b;
+	--accent-green-dark: #6b7a5e;
 	--heading-color: #3a3a3a;
 	--text-color: #5a5a5a;
 	--text-light: #7a7a7a;

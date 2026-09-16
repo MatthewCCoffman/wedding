@@ -8,23 +8,24 @@
 
 .timeline-section {
     border-top: 2px dashed;
-    border-color: #47805c !important;
+    border-color: var(--accent-green) !important;
     margin:0;
     padding: 30px;
     position: relative;
 }
 
 .timeline-section::before {
-    background-color: white;
+    background-color: var(--background-color);
     content: attr(data-date);
     position: relative;
     width: 62px;
     display: inline-block;
     height: 60px;
     line-height: 60px;
-    border: 3px solid #47805c !important;
+    border: 3px solid var(--accent-green);
     border-radius: 60%;
     z-index: 1;
+    color: var(--accent-green-dark);
 }
 
 .timeline-section:nth-child(even) {

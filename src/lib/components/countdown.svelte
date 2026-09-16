@@ -72,14 +72,14 @@
 
 	.unit:hover .circle {
 		transform: scale(1.08);
-		border-color: var(--accent-color);
-		box-shadow: 0 8px 25px rgba(184, 153, 104, 0.3);
+		border-color: var(--accent-green-dark);
+		box-shadow: 0 8px 25px rgba(139, 155, 126, 0.3);
 	}
 
 	.circle {
-		background: linear-gradient(135deg, #ffffff, rgba(232, 223, 213, 0.3));
-		border: 2px solid var(--accent-color);
-		color: var(--accent-color);
+		background: var(--background-color);
+		border: 2px solid var(--accent-green);
+		color: var(--accent-green-dark);
 		border-radius: 50%;
 		width: 85px;
 		height: 85px;
@@ -89,7 +89,7 @@
 		font-size: 2rem;
 		font-weight: 400;
 		margin: 0 auto 0.75rem auto;
-		box-shadow: 0 5px 20px rgba(139, 115, 85, 0.15);
+		box-shadow: 0 5px 20px rgba(139, 155, 126, 0.15);
 		transition: var(--transition-smooth);
 		position: relative;
 	}
@@ -100,7 +100,7 @@
 		inset: -5px;
 		border-radius: 50%;
 		padding: 2px;
-		background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+		background: linear-gradient(135deg, var(--accent-green), var(--accent-green-light));
 		-webkit-mask: 
 			linear-gradient(#fff 0 0) content-box, 
 			linear-gradient(#fff 0 0);
@@ -124,7 +124,7 @@
 
 	.separator {
 		font-size: 2.2rem;
-		color: var(--accent-color);
+		color: var(--accent-green);
 		font-weight: 300;
 	}
 

@@ -235,8 +235,8 @@
 	.rsvp-form select:focus,
 	.rsvp-form textarea:focus {
 		outline: none;
-		border-color: var(--accent-color);
-		box-shadow: 0 0 0 3px rgba(184, 153, 104, 0.1);
+		border-color: var(--accent-green);
+		box-shadow: 0 0 0 3px rgba(139, 155, 126, 0.15);
 		background: rgba(255, 255, 255, 1);
 	}
 
@@ -247,18 +247,18 @@
 
 	.rsvp-form button {
 		padding: 1rem 2rem;
-		background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+		background: linear-gradient(135deg, var(--accent-green), var(--accent-green-dark));
 		color: white;
 		font-family: var(--font-accent);
 		font-weight: 600;
 		font-size: 1.1rem;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
-		border: 2px solid var(--accent-color);
+		border: 2px solid var(--accent-green);
 		cursor: pointer;
 		border-radius: 0.5rem;
 		transition: var(--transition-smooth);
-		box-shadow: 0 8px 20px rgba(139, 115, 85, 0.2);
+		box-shadow: 0 8px 20px rgba(139, 155, 126, 0.25);
 		position: relative;
 		overflow: hidden;
 	}
@@ -283,7 +283,7 @@
 
 	.rsvp-form button:hover:not(:disabled) {
 		transform: translateY(-2px);
-		box-shadow: 0 12px 30px rgba(139, 115, 85, 0.3);
+		box-shadow: 0 12px 30px rgba(139, 155, 126, 0.35);
 	}
 
 	.rsvp-form button:disabled {
