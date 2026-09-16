@@ -40,86 +40,127 @@
 </script>
 
 <style>
-  .countdown {
-    font-family: 'Playfair Display', serif;
-    color: #000000;
-    background: #ffffff;
-    padding: 1.5rem 2rem;
-    /* border: 2px solid #e8dcd4; */
-    border-radius: 1rem;
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 10px rgb(255, 255, 255);
-    flex-wrap: wrap;
-    max-width: 650px;
-    margin: 0 auto;
-  }
+	.countdown {
+		font-family: var(--font-accent);
+		color: var(--text-color);
+		background: linear-gradient(135deg, 
+			rgba(255, 255, 255, 0.95), 
+			rgba(232, 223, 213, 0.4));
+		padding: 2.5rem 3rem;
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+		display: flex;
+		gap: 2.5rem;
+		justify-content: center;
+		align-items: center;
+		box-shadow: 0 15px 40px rgba(139, 115, 85, 0.12);
+		flex-wrap: wrap;
+		max-width: 700px;
+		margin: 2rem auto;
+		transition: var(--transition-smooth);
+	}
 
-  .unit {
-    text-align: center;
-  }
+	.countdown:hover {
+		box-shadow: 0 20px 50px rgba(184, 153, 104, 0.3);
+		transform: translateY(-3px);
+	}
 
-  .circle {
-    background: #ffffff;
-    border: 2px solid #8bc9a2;
-    color: #8bc9a2;
-    border-radius: 50%;
-    width: 70px;
-    height: 70px;
-    display: flex;
-    padding: 5px;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    font-weight: 400;
-    margin: 0 auto 0.5rem auto;
-    box-shadow: 0 0 6px rgb(255, 255, 255);
-  }
+	.unit {
+		text-align: center;
+		transition: var(--transition-smooth);
+	}
 
-  .label {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
+	.unit:hover .circle {
+		transform: scale(1.08);
+		border-color: var(--accent-color);
+		box-shadow: 0 8px 25px rgba(184, 153, 104, 0.3);
+	}
 
-  .separator {
-    font-size: 2rem;
-    color: #8bc9a2;
-  }
+	.circle {
+		background: linear-gradient(135deg, #ffffff, rgba(232, 223, 213, 0.3));
+		border: 2px solid var(--accent-color);
+		color: var(--accent-color);
+		border-radius: 50%;
+		width: 85px;
+		height: 85px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 2rem;
+		font-weight: 400;
+		margin: 0 auto 0.75rem auto;
+		box-shadow: 0 5px 20px rgba(139, 115, 85, 0.15);
+		transition: var(--transition-smooth);
+		position: relative;
+	}
 
-@media (max-width: 500px) {
-  .countdown {
-    flex-direction: row;
-    flex-wrap: nowrap; /* keep it all in one row */
-    gap: 0.5rem;
-    padding: 1rem;
-    justify-content: space-between;
-  }
+	.circle::before {
+		content: '';
+		position: absolute;
+		inset: -5px;
+		border-radius: 50%;
+		padding: 2px;
+		background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+		-webkit-mask: 
+			linear-gradient(#fff 0 0) content-box, 
+			linear-gradient(#fff 0 0);
+		-webkit-mask-composite: xor;
+		mask-composite: exclude;
+		opacity: 0;
+		transition: var(--transition-smooth);
+	}
 
-  .unit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: auto;
-  }
+	.unit:hover .circle::before {
+		opacity: 0.4;
+	}
 
-  .circle {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
-  }
+	.label {
+		font-size: 0.9rem;
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		color: var(--text-light);
+		font-weight: 500;
+	}
 
-  .label {
-    font-size: 0.65rem;
-  }
+	.separator {
+		font-size: 2.2rem;
+		color: var(--accent-color);
+		font-weight: 300;
+	}
 
-  .separator {
-    font-size: 1.2rem;
-    padding: 0 0.2rem;
-  }
-}
+	@media (max-width: 600px) {
+		.countdown {
+			flex-direction: row;
+			flex-wrap: nowrap;
+			gap: 0.8rem;
+			padding: 1.5rem 1rem;
+			justify-content: space-between;
+		}
+
+		.unit {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: auto;
+		}
+
+		.circle {
+			width: 60px;
+			height: 60px;
+			font-size: 1.4rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.label {
+			font-size: 0.7rem;
+			letter-spacing: 0.1em;
+		}
+
+		.separator {
+			font-size: 1.4rem;
+			padding: 0 0.1rem;
+		}
+	}
 </style>
 
 <div class="countdown">

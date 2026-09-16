@@ -174,8 +174,8 @@
 	}
 
 	.logo-wrapper img {
-		height: 200px;
-		width: 200px;
+		height: 175px;
+		width: 150px;
 		border-radius: 25%;
 		object-fit: contain;
 		padding-right: 0%;
@@ -251,8 +251,8 @@
 	}
 
 	.logo-wrapper img {
-		height: 120px;
-		width: 120px;
+		height: 175px;
+		width: 150px;
 		border-radius: 25%;		
 		box-shadow: 0 0 5px rgba(0,0,0,0.2);
 		margin-bottom:50px;

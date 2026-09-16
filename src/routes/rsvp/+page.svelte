@@ -85,138 +85,267 @@
 </script>
 
 {#if submitted}
-  <div class="success-message">
-    🎉 Thank you for your RSVP!
-  </div>
+	<div class="rsvp-body">
+		<div class="success-message">
+			🎉 Thank you for your RSVP!
+		</div>
+	</div>
 {:else}
-  <form on:submit={handleSubmit} class="rsvp-box rsvp-form rsvp-body" novalidate>
-    {#if error}
-      <div class="error">{error}</div>
-    {/if}
+	<div class="rsvp-body">
+		<div class="page-title">
+			<div class="page-title-text">RSVP</div>
+		</div>
+		<form on:submit={handleSubmit} class="rsvp-box rsvp-form" novalidate>
+			{#if error}
+				<div class="error">{error}</div>
+			{/if}
 
-    <label>
-      First and Last Name *
-      <input type="text" bind:value={name} required />
-    </label>
+			<label>
+				First and Last Name *
+				<input type="text" bind:value={name} required />
+			</label>
 
-    <label>
-      Email *
-      <input type="email" bind:value={email} required />
-    </label>
+			<label>
+				Email *
+				<input type="email" bind:value={email} required />
+			</label>
 
-    <label>
-      Will you attend?
-      <select bind:value={attending}>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </select>
-    </label>
+			<label>
+				Will you attend?
+				<select bind:value={attending}>
+					<option value="Yes">Yes</option>
+					<option value="No">No</option>
+				</select>
+			</label>
 
-    <label>
-      Number of Guests
-      <input type="number" min="1" bind:value={guests} />
-    </label>
+			<label>
+				Number of Guests
+				<input type="number" min="1" bind:value={guests} />
+			</label>
 
-    <label>
-      Message
-      <textarea bind:value={message}></textarea>
-    </label>
+			<label>
+				Message
+				<textarea bind:value={message}></textarea>
+			</label>
 
-    <button type="submit" disabled={loading}>
-      {#if loading}
-        Submitting...
-      {:else}
-        Submit RSVP
-      {/if}
-    </button>
-  </form>
+			<button type="submit" disabled={loading}>
+				{#if loading}
+					Submitting...
+				{:else}
+					Submit RSVP
+				{/if}
+			</button>
+		</form>
+	</div>
 {/if}
 
 <style>
-  .rsvp-body {
-    background: #f9f7f3;
-    display: flex;
-    justify-content: center;
-    font-family: "Georgia", serif;
-    padding: 1rem;
-  }
+	.rsvp-body {
+		background: var(--background-color);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		font-family: var(--font-body);
+		padding: 2rem 1rem;
+	}
 
-/* Form itself */
-.rsvp-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  width: 100%;
-}
+	.page-title {
+		text-align: center;
+		margin-bottom: 2rem;
+	}
 
-/* Box styling */
-.rsvp-box {
-  background: #fff;
-  padding: 40px;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  border-radius: 8px;
-  text-align: left;
-  max-width: 500px;
-  width: 100%;
-}
+	.page-title-text {
+		font-family: var(--font-heading);
+		font-size: 3rem;
+		font-weight: 300;
+		color: var(--heading-color);
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		position: relative;
+		display: inline-block;
+	}
 
-/* Inputs */
-.rsvp-form label {
-  display: flex;
-  flex-direction: column;
-  font-weight: 500;
-}
+	.page-title-text::after {
+		content: '';
+		position: absolute;
+		bottom: -15px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 100px;
+		height: 2px;
+		background: linear-gradient(90deg, 
+			transparent, 
+			var(--accent-color), 
+			transparent);
+	}
 
-.rsvp-form input,
-.rsvp-form select,
-.rsvp-form textarea {
-  padding: 0.5rem;
-  font-size: 1rem;
-}
+	/* Form itself */
+	.rsvp-form {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		width: 100%;
+	}
 
-.rsvp-form button {
-  padding: 0.75rem;
-  background:#47805c !important;
-  color: white;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-}
+	/* Box styling */
+	.rsvp-box {
+		background: linear-gradient(135deg, 
+			rgba(255, 255, 255, 0.98), 
+			rgba(232, 223, 213, 0.3));
+		padding: 3rem;
+		border: 1px solid var(--border-color);
+		box-shadow: 0 15px 40px rgba(139, 115, 85, 0.15);
+		border-radius: 1rem;
+		text-align: left;
+		max-width: 600px;
+		width: 100%;
+		transition: var(--transition-smooth);
+	}
 
-.rsvp-form button:disabled {
-  background: #9ccc9c;
-  cursor: not-allowed;
-}
+	.rsvp-box:hover {
+		box-shadow: 0 20px 50px rgba(139, 115, 85, 0.2);
+	}
 
-/* Messages */
-.success-message {
-  background: #e6ffe6;
-  padding: 1rem;
-  border: 1px solid #b2ffb2;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
+	/* Inputs */
+	.rsvp-form label {
+		display: flex;
+		flex-direction: column;
+		font-family: var(--font-accent);
+		font-weight: 500;
+		font-size: 0.95rem;
+		color: var(--text-color);
+		letter-spacing: 0.05em;
+		gap: 0.5rem;
+	}
 
-.error {
-  color: red;
-  font-weight: 600;
-}
+	.rsvp-form input,
+	.rsvp-form select,
+	.rsvp-form textarea {
+		padding: 0.85rem 1rem;
+		font-size: 1rem;
+		font-family: 'Crimson Text', 'Georgia', serif;
+		border: 1px solid var(--border-color);
+		border-radius: 0.5rem;
+		background: rgba(255, 255, 255, 0.8);
+		color: var(--text-color);
+		transition: var(--transition-smooth);
+	}
 
-/* Desktop-specific adjustments */
-@media (min-width: 800px) {
-    .rsvp-box {
-      margin-left: 200px;
-    }
-}
+	.rsvp-form input:focus,
+	.rsvp-form select:focus,
+	.rsvp-form textarea:focus {
+		outline: none;
+		border-color: var(--accent-color);
+		box-shadow: 0 0 0 3px rgba(184, 153, 104, 0.1);
+		background: rgba(255, 255, 255, 1);
+	}
 
-/* Mobile-specific adjustments */
-@media (max-width: 799px) {
-  .rsvp-box {
-    /* margin-left: auto; */
-    padding: 8px;
-  }
-}
+	.rsvp-form textarea {
+		min-height: 120px;
+		resize: vertical;
+	}
+
+	.rsvp-form button {
+		padding: 1rem 2rem;
+		background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+		color: white;
+		font-family: var(--font-accent);
+		font-weight: 600;
+		font-size: 1.1rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		border: 2px solid var(--accent-color);
+		cursor: pointer;
+		border-radius: 0.5rem;
+		transition: var(--transition-smooth);
+		box-shadow: 0 8px 20px rgba(139, 115, 85, 0.2);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.rsvp-form button::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, 
+			transparent, 
+			rgba(255, 255, 255, 0.3), 
+			transparent);
+		transition: left 0.5s ease;
+	}
+
+	.rsvp-form button:hover::before {
+		left: 100%;
+	}
+
+	.rsvp-form button:hover:not(:disabled) {
+		transform: translateY(-2px);
+		box-shadow: 0 12px 30px rgba(139, 115, 85, 0.3);
+	}
+
+	.rsvp-form button:disabled {
+		background: linear-gradient(135deg, #c4c4c4, #a0a0a0);
+		border-color: #c4c4c4;
+		cursor: not-allowed;
+		opacity: 0.6;
+		transform: none;
+	}
+
+	/* Messages */
+	.success-message {
+		background: linear-gradient(135deg, 
+			rgba(232, 255, 232, 0.95), 
+			rgba(200, 255, 200, 0.4));
+		padding: 2.5rem;
+		border: 2px solid #90ee90;
+		border-radius: 1rem;
+		font-family: var(--font-heading);
+		font-weight: 400;
+		font-size: 2rem;
+		text-align: center;
+		color: var(--heading-color);
+		box-shadow: 0 15px 40px rgba(139, 115, 85, 0.15);
+		max-width: 600px;
+		letter-spacing: 0.05em;
+	}
+
+	.error {
+		color: #d32f2f;
+		font-weight: 600;
+		padding: 1rem;
+		background: rgba(255, 235, 238, 0.9);
+		border-radius: 0.5rem;
+		border: 1px solid rgba(211, 47, 47, 0.3);
+		font-size: 0.95rem;
+	}
+
+	/* Desktop-specific adjustments */
+	@media (min-width: 800px) {
+		.rsvp-box {
+			margin: 0 auto;
+		}
+	}
+
+	/* Mobile-specific adjustments */
+	@media (max-width: 799px) {
+		.rsvp-box {
+			padding: 2rem 1.5rem;
+		}
+
+		.page-title-text {
+			font-size: 2.2rem;
+		}
+
+		.rsvp-form {
+			gap: 1.2rem;
+		}
+
+		.success-message {
+			font-size: 1.6rem;
+			padding: 2rem;
+		}
+	}
 </style>

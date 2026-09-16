@@ -76,13 +76,36 @@
 
 <style>
 .page-title {
-  text-align: center;
-  font-size: 2rem;
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  margin-bottom: 3rem;
-  color:rgb(0, 0, 0);
+	text-align: center;
+	margin-bottom: 3rem;
 }
+
+.page-title div {
+	font-family: var(--font-heading);
+	font-size: 3rem;
+	font-weight: 300;
+	color: var(--heading-color);
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	position: relative;
+	display: inline-block;
+	padding-bottom: 1rem;
+}
+
+.page-title div::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 80px;
+	height: 2px;
+	background: linear-gradient(90deg, 
+		transparent, 
+		var(--accent-color), 
+		transparent);
+}
+
 /* Page Content */
 .page-content {
   display: flex;

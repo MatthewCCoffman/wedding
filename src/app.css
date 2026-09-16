@@ -1,34 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
 :root {
-	font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-family: 'Crimson Text', 'Georgia', serif;
+	--font-heading: 'Cormorant Garamond', 'Playfair Display', serif;
+	--font-accent: 'Montserrat', sans-serif;
 	--font-mono: 'Fira Mono', monospace;
-	--background-color: #ffffff;
-	--primary-color: #000000;
-	--secondary-color: #91B1E0;
-	--tertiary-color: #A1E2F7;
-	--accent-color: #ffffff;
-	--heading-color: rgba(0, 0, 0, 0.7);
-	--text-color: #444444;
-	--background-without-opacity: rgb(255, 255, 255);
+	
+	/* Elegant Color Palette */
+	--background-color: #fdfbf7;
+	--primary-color: #2c2c2c;
+	--secondary-color: #8b7355;
+	--tertiary-color: #d4c5b9;
+	--accent-color: #b89968;
+	--accent-light: #e8dfd5;
+	--heading-color: #3a3a3a;
+	--text-color: #5a5a5a;
+	--text-light: #7a7a7a;
+	--border-color: rgba(139, 115, 85, 0.2);
+	
 	--column-width: 42rem;
 	--column-margin-top: 4rem;
+	--transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
     height: 100%;
     width: 100%;
 	overflow-x: hidden;
+	scroll-behavior: smooth;
 }
+
 html body {
     height: 100%;
     margin: 0;
     width: 100%;
-	  overflow-x: hidden;
+	overflow-x: hidden;
+	background-color: var(--background-color);
 }
+
 html body #svelte {
     height: 100%;
     width: 100%;
-	  overflow-x: hidden;
+	overflow-x: hidden;
 }
 
 div {
@@ -41,9 +54,31 @@ div {
 
 a {
 	color: var(--secondary-color);
-	font-weight: bold;
+	font-weight: 500;
+	text-decoration: none;
+	transition: var(--transition-smooth);
+	position: relative;
 }
 
-a:visited, a:hover {
+a::after {
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	left: 0;
+	width: 0;
+	height: 1px;
+	background-color: var(--accent-color);
+	transition: width 0.3s ease;
+}
+
+a:hover::after {
+	width: 100%;
+}
+
+a:visited {
 	color: var(--secondary-color);
+}
+
+a:hover {
+	color: var(--accent-color);
 }

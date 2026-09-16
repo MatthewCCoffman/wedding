@@ -39,41 +39,79 @@
 <div class="external-guides"></div>
 
 <style>
-  html,
-  body {
-    /* Make sure the page stretches full height */
-    height: 100%;
-    margin: 0;
-  }
+	html,
+	body {
+		height: 100%;
+		margin: 0;
+	}
 
-  :global(body) {
-    /* Svelte requires :global if you want to target <body> */
-    height: 100vh;
-  }
+	:global(body) {
+		height: 100vh;
+	}
 
-  #map {
-    height: 400px; /* explicit height works best */
-    width: 90%;
-    margin: 20px auto;
-    border: 1px solid #ccc;
-  }
+	#map {
+		height: 500px;
+		width: 92%;
+		margin: 2rem auto;
+		border-radius: 0.75rem;
+		box-shadow: 0 15px 40px rgba(139, 115, 85, 0.15);
+		border: 1px solid var(--border-color);
+		overflow: hidden;
+		transition: var(--transition-smooth);
+	}
 
-  .durham-page-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+	#map:hover {
+		box-shadow: 0 20px 50px rgba(139, 115, 85, 0.25);
+	}
 
-  .page-subtitle {
-    font-size: 12px;
-    font-style: italic;
-  }
+	.durham-page-title {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: 1rem;
+	}
 
-  .external-guides {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 20%;
-  }
+	.durham-page-title div:first-child {
+		font-family: var(--font-heading);
+		font-size: 2.5rem;
+		font-weight: 300;
+		color: var(--heading-color);
+		letter-spacing: 0.12em;
+		text-align: center;
+		margin-bottom: 0.5rem;
+	}
+
+	.page-subtitle {
+		font-family: var(--font-accent);
+		font-size: 0.9rem;
+		font-style: italic;
+		color: var(--text-light);
+		letter-spacing: 0.05em;
+	}
+
+	.external-guides {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: 2rem 0;
+		padding: 2rem;
+	}
+
+	@media (max-width: 768px) {
+		#map {
+			height: 400px;
+			width: 95%;
+			margin: 1.5rem auto;
+		}
+
+		.durham-page-title div:first-child {
+			font-size: 2rem;
+			padding: 0 1rem;
+		}
+
+		.page-subtitle {
+			font-size: 0.85rem;
+		}
+	}
 </style>
