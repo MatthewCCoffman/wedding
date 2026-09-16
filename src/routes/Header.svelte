@@ -125,7 +125,7 @@
 		display: block;
 		width: 100%;
 		height: 3px;
-		background-color: var(--text-color, #333);
+		background-color: var(--accent-color);
 		border-radius: 3px;
 		transition: 0.3s ease;
 	}
@@ -229,9 +229,12 @@
 		display: none;
 		flex-direction: column;
 		width: 100%;
-		background: var(--accent-color, #fff);
+		background: rgba(253, 251, 247, 0.97);
+		backdrop-filter: blur(10px);
 		align-items: center;
-		padding: 1rem 0;
+		padding: 1.5rem 0;
+		border-top: 1px solid var(--border-color);
+		box-shadow: 0 4px 15px rgba(139, 115, 85, 0.1);
 	}
 
 	nav.is-open {
