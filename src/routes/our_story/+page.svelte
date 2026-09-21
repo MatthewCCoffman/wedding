@@ -151,17 +151,6 @@
   font-family: 'Georgia', serif;
 }
 
-.timeline-header {
-  text-align: center;
-  font-size: 2.5rem;
-  font-family: 'Playfair Display', serif;
-  font-weight: 500;
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  color:rgb(0, 0, 0); /* warm champagne gold */
-  text-shadow: 1px 1px 3px rgba(173, 169, 167, 0.5);
-}
-
 /* Mobile Adjustments */
 @media only screen and (max-width: 500px) {
   /* Page Content */

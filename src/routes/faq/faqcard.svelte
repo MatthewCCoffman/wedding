@@ -4,7 +4,7 @@
   let open = false;
 </script>
 
-<div class="faq-card" on:click={() => (open = !open)}>
+<button type="button" class="faq-card" on:click={() => (open = !open)} aria-expanded={open}>
   <div class="faq-question">
     <h3>{question}</h3>
     <span>{open ? "−" : "+"}</span>
@@ -14,15 +14,19 @@
       <p>{answer}</p>
     </div>
   {/if}
-</div>
+</button>
 
 <style>
   .faq-card {
+    width: 100%;
     border: 1px solid #ccc;
     border-radius: 1rem;
     padding: 1rem;
     margin-bottom: 1rem;
     cursor: pointer;
+    text-align: left;
+    font: inherit;
+    color: inherit;
     transition: box-shadow 0.2s;
     background: white;
   }

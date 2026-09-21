@@ -34,6 +34,14 @@
     startX = 0;
     endX = 0;
   }
+
+  function handleKeydown(event) {
+    if (event.key === 'ArrowLeft') {
+      prev();
+    } else if (event.key === 'ArrowRight') {
+      next();
+    }
+  }
 </script>
 
 <style>
@@ -92,12 +100,20 @@
 .thumbnail {
   width: 50px;
   height: 50px;
-  object-fit: cover;
+  padding: 0;
+  background: transparent;
+  border: 2px solid transparent;
   cursor: pointer;
   opacity: 0.6;
-  border: 2px solid transparent;
   transition: opacity 0.3s, border-color 0.3s;
   flex-shrink: 0;
+}
+
+.thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .thumbnail:hover {
@@ -119,7 +135,11 @@
 <div class="carousel">
   <div
     class="image-container"
+    role="button"
+    tabindex="0"
+    aria-label="Wedding photo carousel"
     style="transform: translateX(-{currentIndex * 100}%);"
+    on:keydown={handleKeydown}
     on:touchstart={handleTouchStart}
     on:touchmove={handleTouchMove}
     on:touchend={handleTouchEnd}
@@ -127,22 +147,25 @@
     on:mousemove={handleTouchMove}
     on:mouseup={handleTouchEnd}
   >
-    {#each photos as photo (photo)}
-      <img class="image" src="{photo}" alt="Photo" />
+    {#each photos as photo, i (photo)}
+      <img class="image" src={photo} alt={`Wedding photo ${i + 1}`} />
     {/each}
   </div>
 
-  <button class="button prev" on:click={prev}>&larr;</button>
-  <button class="button next" on:click={next}>&rarr;</button>
+  <button class="button prev" type="button" on:click={prev} aria-label="Previous photo">&larr;</button>
+  <button class="button next" type="button" on:click={next} aria-label="Next photo">&rarr;</button>
 </div>
 
-<div class="gallery">
+<div class="gallery" aria-label="Photo thumbnails">
   {#each photos as photo, i (photo)}
-    <img
+    <button
+      type="button"
       class="thumbnail {i === currentIndex ? 'active' : ''}"
-      src="{photo}"
-      alt="Thumbnail"
-      on:click={() => currentIndex = i}
-    />
+      aria-label={`View photo ${i + 1}`}
+      aria-pressed={i === currentIndex}
+      on:click={() => (currentIndex = i)}
+    >
+      <img src={photo} alt={`Thumbnail ${i + 1}`} />
+    </button>
   {/each}
 </div>

@@ -2,6 +2,7 @@
 	import { onMount, onDestroy } from 'svelte';
 
 	function removeZolaInjectedNodes() {
+		if (typeof document === 'undefined') return;
 		// remove any anchors or placeholders
 		document.querySelectorAll('.zola-registry-embed, [data-registry-key]').forEach(n => n.remove());
 		// remove the widget loader script if present
@@ -30,6 +31,7 @@
 	});
 
 	onDestroy(() => {
+		if (typeof document === 'undefined') return;
 		// cleanup any DOM the widget injected so it doesn't persist after navigation
 		removeZolaInjectedNodes();
 	});

@@ -36,17 +36,23 @@
 
 <section class="faq-section">
   {#each faqs as faq, index}
-    <div class="faq-card" on:click={() => toggle(index)}>
+    <button
+      type="button"
+      class="faq-card"
+      on:click={() => toggle(index)}
+      aria-expanded={openIndexes.has(index)}
+      aria-controls={`faq-answer-${index}`}
+    >
       <div class="faq-question">
         <h3>{faq.question}</h3>
-        <span>{openIndexes.has(index) ? "−" : " +"}</span>
+        <span>{openIndexes.has(index) ? "−" : "+"}</span>
       </div>
       {#if openIndexes.has(index)}
-        <div class="faq-answer">
+        <div class="faq-answer" id={`faq-answer-${index}`}>
           <p>{faq.answer}</p>
         </div>
       {/if}
-    </div>
+    </button>
   {/each}
 </section>
 
@@ -57,18 +63,17 @@
     padding: 2rem 1rem;
   }
 
-  .faq-section h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-
   .faq-card {
+    width: 100%;
     border: 1px solid #ccc;
     border-radius: 1rem;
     padding: 1rem;
     margin-bottom: 1rem;
     cursor: pointer;
     background: white;
+    text-align: left;
+    font: inherit;
+    color: inherit;
     transition: box-shadow 0.2s;
   }
 
