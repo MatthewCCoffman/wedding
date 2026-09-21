@@ -1,4 +1,6 @@
 <script>
+  import { language } from '$lib/stores/language';
+
   let name = "";
   let email = "";
   let attending = "Yes";
@@ -8,6 +10,35 @@
   let submitted = false;
   let error = "";
   let loading = false;
+
+  const translations = {
+    en: {
+      success: '🎉 Thank you for your RSVP!',
+      title: 'RSVP',
+      requiredName: 'First and Last Name *',
+      email: 'Email *',
+      attend: 'Will you attend?',
+      guestCount: 'Number of Guests',
+      notes: 'Message',
+      submit: 'Submit RSVP',
+      submitting: 'Submitting...',
+      required: 'Please fill in all required fields.'
+    },
+    es: {
+      success: '🎉 ¡Gracias por confirmar tu asistencia!',
+      title: 'RSVP',
+      requiredName: 'Nombre y apellido *',
+      email: 'Correo electrónico *',
+      attend: '¿Asistirás?',
+      guestCount: 'Número de invitados',
+      notes: 'Mensaje',
+      submit: 'Enviar RSVP',
+      submitting: 'Enviando...',
+      required: 'Por favor completa todos los campos requeridos.'
+    }
+  };
+
+  $: currentText = translations[$language];
 
   const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfzvqKoq3ALSXlx3xfnOQ-NOefwrKyiXSOdHr28_SKJDvZQXQ/formResponse";
 
@@ -40,7 +71,7 @@
     event.preventDefault();
 
     if (!name.trim() || !email.trim()) {
-      error = "Please fill in all required fields.";
+      error = currentText.required;
       return;
     }
 
@@ -87,13 +118,13 @@
 {#if submitted}
 	<div class="rsvp-body">
 		<div class="success-message">
-			🎉 Thank you for your RSVP!
+			{currentText.success}
 		</div>
 	</div>
 {:else}
 	<div class="rsvp-body">
 		<div class="page-title">
-			<div class="page-title-text">RSVP</div>
+			<div class="page-title-text">{currentText.title}</div>
 		</div>
 		<form on:submit={handleSubmit} class="rsvp-box rsvp-form" novalidate>
 			{#if error}
@@ -101,38 +132,38 @@
 			{/if}
 
 			<label>
-				First and Last Name *
+				{currentText.requiredName}
 				<input type="text" bind:value={name} required />
 			</label>
 
 			<label>
-				Email *
+				{currentText.email}
 				<input type="email" bind:value={email} required />
 			</label>
 
 			<label>
-				Will you attend?
+				{currentText.attend}
 				<select bind:value={attending}>
-					<option value="Yes">Yes</option>
-					<option value="No">No</option>
+					<option value="Yes">{$language === 'en' ? 'Yes' : 'Sí'}</option>
+					<option value="No">{$language === 'en' ? 'No' : 'No'}</option>
 				</select>
 			</label>
 
 			<label>
-				Number of Guests
+				{currentText.guestCount}
 				<input type="number" min="1" bind:value={guests} />
 			</label>
 
 			<label>
-				Message
+				{currentText.notes}
 				<textarea bind:value={message}></textarea>
 			</label>
 
 			<button type="submit" disabled={loading}>
 				{#if loading}
-					Submitting...
+					{currentText.submitting}
 				{:else}
-					Submit RSVP
+					{currentText.submit}
 				{/if}
 			</button>
 		</form>

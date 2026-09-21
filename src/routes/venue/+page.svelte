@@ -1,7 +1,23 @@
 <script>
   import { onMount } from 'svelte';
+  import { language } from '$lib/stores/language';
   import 'mapbox-gl/dist/mapbox-gl.css';
   import mapboxgl from 'mapbox-gl';
+
+  const translations = {
+    en: {
+      title: 'Hotel Real del Bosque, Hidalgo',
+      subtitle: 'Zoom in for descriptions',
+      venue: 'Wedding Venue'
+    },
+    es: {
+      title: 'Hotel Real del Bosque, Hidalgo',
+      subtitle: 'Acércate para ver más detalles',
+      venue: 'Lugar de la boda'
+    }
+  };
+
+  $: currentText = translations[$language];
 
   onMount(() => {
     mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGhldy1jb2ZmbWFuIiwiYSI6ImNtY2lhN2g4aDBoNDkybW9uZzFwNGk0cXIifQ.UuHCF-adGBIVNRFYOM0_2g';
@@ -14,7 +30,7 @@
     });
 
     const popup = new mapboxgl.Popup().setHTML(
-      `<h3>Hotel Real del Bosque</h3><p>Wedding Venue</p>`
+      `<h3>Hotel Real del Bosque</h3><p>${currentText.venue}</p>`
     );
 
     new mapboxgl.Marker()
@@ -24,14 +40,13 @@
 
     map.on('zoomend', () => console.log(`Current zoom: ${map.getZoom()}`));
 
-    // Helps in some cases if container size changes after mount
     setTimeout(() => map.resize(), 500);
   });
 </script>
 
 <div class="page-title durham-page-title">
-  <div>Hotel Real del Bosque, Hidalgo</div>
-  <div class="page-subtitle">Zoom in for descriptions</div>
+  <div>{currentText.title}</div>
+  <div class="page-subtitle">{currentText.subtitle}</div>
 </div>
 
 <div id="map"></div>

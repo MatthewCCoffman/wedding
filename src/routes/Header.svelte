@@ -1,7 +1,29 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { language } from '$lib/stores/language';
 	import logo from '$lib/images/download.png';
 	let isMenuOpen = false;
+
+	const navTranslations = {
+		en: {
+			home: 'Home',
+			story: 'Story',
+			photos: 'Photos',
+			venue: 'Venue',
+			registry: 'Registry',
+			rsvp: 'RSVP'
+		},
+		es: {
+			home: 'Inicio',
+			story: 'Historia',
+			photos: 'Fotos',
+			venue: 'Lugar',
+			registry: 'Regalos',
+			rsvp: 'RSVP'
+		}
+	} as const;
+
+	$: navText = navTranslations[$language];
 
 	function closeMenu() {
 		isMenuOpen = false;
@@ -22,9 +44,9 @@
 	</div>
 			<div class="primary-section">
 			<div class="section-info">
-				<span class="section-date">November 07, 2026</span>
+				<span class="section-date">{$language === 'en' ? 'November 07, 2026' : '07 de noviembre de 2026'}</span>
 				<span class="separator">&bull;</span>
-				<span class="section-date">Hgo, Mexico</span>
+				<span class="section-date">{$language === 'en' ? 'Hgo, Mexico' : 'Hgo, México'}</span>
 			</div>
 		</div>
 	
@@ -44,28 +66,28 @@
 				<nav class:is-open={isMenuOpen}>
 					<ul>
 						<li aria-current={page.url.pathname === '/' ? 'page' : undefined}>
-							<a href="/" on:click={closeMenu}>Home</a>
+							<a href="/" on:click={closeMenu}>{navText.home}</a>
 						</li>
 						<li aria-current={page.url.pathname.startsWith('/our_story') ? 'page' : undefined}>
-							<a href="/our_story" on:click={closeMenu}>Story</a>
+							<a href="/our_story" on:click={closeMenu}>{navText.story}</a>
 						</li>
 						<!-- <li aria-current={page.url.pathname.startsWith('/itinerary') ? 'page' : undefined}>
 							<a href="/itinerary" on:click={closeMenu}>Itinerary</a>
 						</li> -->
 						<li aria-current={page.url.pathname.startsWith('/photos') ? 'page' : undefined}>
-							<a href="/photos" on:click={closeMenu}>Photos</a>
+							<a href="/photos" on:click={closeMenu}>{navText.photos}</a>
 						</li>
 						<li aria-current={page.url.pathname.startsWith('/venue') ? 'page' : undefined}>
-							<a href="/venue" on:click={closeMenu}>Venue</a>
+							<a href="/venue" on:click={closeMenu}>{navText.venue}</a>
 						</li>
 						<!-- <li aria-current={page.url.pathname.startsWith('/faq') ? 'page' : undefined}>
 							<a href="/faq" on:click={closeMenu}>FAQ</a>
 						</li> -->
 						<li aria-current={page.url.pathname.startsWith('/registry') ? 'page' : undefined}>
-							<a href="/registry" on:click={closeMenu}>Registry</a>
+							<a href="/registry" on:click={closeMenu}>{navText.registry}</a>
 						</li>
 						<li aria-current={page.url.pathname.startsWith('/rsvp') ? 'page' : undefined}>
-							<a href="/rsvp" on:click={closeMenu}>RSVP</a>
+							<a href="/rsvp" on:click={closeMenu}>{navText.rsvp}</a>
 						</li>
 					</ul>
 				</nav>
@@ -77,29 +99,29 @@
 			<nav>
 				<ul>
 					<li aria-current={page.url.pathname === '/' ? 'page' : undefined}>
-						<a href="/">Home</a>
+						<a href="/">{navText.home}</a>
 					</li>
 					<li aria-current={page.url.pathname.startsWith('/our_story') ? 'page' : undefined}>
-						<a href="/our_story">Story</a>
+						<a href="/our_story">{navText.story}</a>
 					</li>
 
 					<!-- <li aria-current={page.url.pathname.startsWith('/itinerary') ? 'page' : undefined}>
 						<a href="/itinerary">Itinerary</a>
 					</li> -->
 					<li aria-current={page.url.pathname.startsWith('/photos') ? 'page' : undefined}>
-						<a href="/photos">Photos</a>
+						<a href="/photos">{navText.photos}</a>
 					</li>
 					<li aria-current={page.url.pathname.startsWith('/venue') ? 'page' : undefined}>
-						<a href="/venue">Venue</a>
+						<a href="/venue">{navText.venue}</a>
 					</li>
 					<!-- <li aria-current={page.url.pathname.startsWith('/faq') ? 'page' : undefined}>
 						<a href="/faq">FAQ</a>
 					</li> -->
 					<li aria-current={page.url.pathname.startsWith('/registry') ? 'page' : undefined}>
-						<a href="/registry">Registry</a>
+						<a href="/registry">{navText.registry}</a>
 					</li>
 					<li aria-current={page.url.pathname.startsWith('/rsvp') ? 'page' : undefined}>
-						<a href="/rsvp">RSVP</a>
+						<a href="/rsvp">{navText.rsvp}</a>
 					</li>
 					<!-- You can add more nav links here -->
 				</ul>

@@ -1,6 +1,7 @@
 <script>
   // @ts-ignore
   import Carousel from './carousel.svelte';
+  import { language } from '$lib/stores/language';
   import pic1 from '$lib/images/062DAEB1-074F-4D90-B101-378E23FE0F8A.jpeg';
   import pic2 from '$lib/images/0F865026-F796-4280-8D61-13C12E0F43E7.jpeg';
   import pic3 from '$lib/images/11012DCD-BDF0-4EAE-8233-7CF562139A6D.jpeg';
@@ -62,10 +63,17 @@
     pic28,
     pic29
   ];
+
+  const pageTitles = {
+    en: 'Photos of Us',
+    es: 'Fotos de Nosotros'
+  };
+
+  $: pageTitle = pageTitles[$language];
 </script>
 
 <div class="page-title">
-  <div>Photos of Us</div>
+  <div>{pageTitle}</div>
 </div>
 
 <div class="page-content">

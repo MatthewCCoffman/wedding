@@ -1,7 +1,6 @@
-import "clsx";
-import { y as ensure_array_like, z as attr_style, v as attr_class, A as bind_props, u as pop, s as push, F as stringify } from "../../../chunks/index.js";
-import { a as attr } from "../../../chunks/attributes.js";
-import { h as fallback } from "../../../chunks/utils.js";
+import { J as fallback, N as ensure_array_like, O as attr_style, E as attr_class, K as bind_props, B as pop, z as push, P as stringify, D as store_get, F as unsubscribe_stores } from "../../../chunks/index2.js";
+import { a as attr, e as escape_html } from "../../../chunks/attributes.js";
+import { l as language } from "../../../chunks/language.js";
 import { b as pic2, a as pic6, p as pic10 } from "../../../chunks/0F865026-F796-4280-8D61-13C12E0F43E7.js";
 import { p as pic25 } from "../../../chunks/BAD39E09-7157-485A-9A02-3A0C03C3A660.js";
 function Carousel($$payload, $$props) {
@@ -50,6 +49,8 @@ const pic27 = "/_app/immutable/assets/F51935B0-65EF-4C57-9BC1-BFBE713D3AE6.B8dQ2
 const pic28 = "/_app/immutable/assets/F83C7893-82FB-4257-815D-4FBB8CA5D2E0.bh3uzMOk.jpeg";
 const pic29 = "/_app/immutable/assets/Facetune_19-06-2025-18-08-07.DVY4d2rO.jpeg";
 function _page($$payload) {
+  var $$store_subs;
+  let pageTitle;
   const images = [
     pic1,
     pic2,
@@ -81,9 +82,12 @@ function _page($$payload) {
     pic28,
     pic29
   ];
-  $$payload.out += `<div class="page-title"><div>Photos of Us</div></div> <div class="page-content">`;
+  const pageTitles = { en: "Photos of Us", es: "Fotos de Nosotros" };
+  pageTitle = pageTitles[store_get($$store_subs ??= {}, "$language", language)];
+  $$payload.out += `<div class="page-title"><div>${escape_html(pageTitle)}</div></div> <div class="page-content">`;
   Carousel($$payload, { photos: images });
   $$payload.out += `<!----></div>`;
+  if ($$store_subs) unsubscribe_stores($$store_subs);
 }
 export {
   _page as default

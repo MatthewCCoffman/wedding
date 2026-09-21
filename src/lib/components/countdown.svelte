@@ -1,10 +1,28 @@
 <script>
   import { onMount } from 'svelte';
 
+  export let language = 'en';
+
   let timeRemaining = {};
   let interval;
 
   const targetDate = new Date('2026-11-07T00:00:00');
+  const labels = {
+    en: {
+      days: 'Days',
+      hours: 'Hours',
+      minutes: 'Minutes',
+      seconds: 'Seconds'
+    },
+    es: {
+      days: 'Días',
+      hours: 'Horas',
+      minutes: 'Minutos',
+      seconds: 'Segundos'
+    }
+  };
+
+  $: translatedLabels = labels[language] || labels.en;
 
   function updateCountdown() {
     const now = new Date();
@@ -166,21 +184,21 @@
 <div class="countdown">
   <div class="unit">
     <div class="circle">{timeRemaining.days}</div>
-    <div class="label">Days</div>
+    <div class="label">{translatedLabels.days}</div>
   </div>
   <div class="separator">:</div>
   <div class="unit">
     <div class="circle">{timeRemaining.hours}</div>
-    <div class="label">Hours</div>
+    <div class="label">{translatedLabels.hours}</div>
   </div>
   <div class="separator">:</div>
   <div class="unit">
     <div class="circle">{timeRemaining.minutes}</div>
-    <div class="label">Minutes</div>
+    <div class="label">{translatedLabels.minutes}</div>
   </div>
   <div class="separator">:</div>
   <div class="unit">
     <div class="circle">{timeRemaining.seconds}</div>
-    <div class="label">Seconds</div>
+    <div class="label">{translatedLabels.seconds}</div>
   </div>
 </div>

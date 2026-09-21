@@ -1,24 +1,74 @@
 <script lang="ts">
 	import Countdown from '../lib/components/countdown.svelte';
+	import { language } from '$lib/stores/language';
 	import welcome from '$lib/images/BAD39E09-7157-485A-9A02-3A0C03C3A660.jpeg';
+
+	const translations = {
+		en: {
+			heading: 'COUNTDOWN TO I DO',
+			alt: 'Evelin and Matthew'
+		},
+		es: {
+			heading: 'CUENTA REGRESIVA PARA DECIR SÍ',
+			alt: 'Evelin y Matthew'
+		}
+	} as const;
+
+	$: currentLanguage = translations[$language];
 </script>
 
 <svelte:head>
-	<title>Evelin & Matthew</title>
-	<meta name="description" content="wedding2026" />
+	<title>{$language === 'en' ? 'Evelin & Matthew' : 'Evelin y Matthew'}</title>
+	<meta name="description" content={$language === 'en' ? 'wedding2026' : 'boda2026'} />
 </svelte:head>
 
+<div class="language-toggle" aria-label="Language switcher">
+	<button type="button" class:active={$language === 'en'} on:click={() => ($language = 'en')} aria-pressed={$language === 'en'}>
+		EN
+	</button>
+	<button type="button" class:active={$language === 'es'} on:click={() => ($language = 'es')} aria-pressed={$language === 'es'}>
+		ES
+	</button>
+</div>
 
 <div class="page-header-image">
-    <img src={welcome} alt="Evelin and Matthew" />
+    <img src={welcome} alt={currentLanguage.alt} />
 </div>
 
 <div class="page-title">
-    <div>COUNTDOWN TO I DO</div>
+    <div>{currentLanguage.heading}</div>
 </div>
-<Countdown />
+<Countdown language={$language} />
 
 <style>
+.language-toggle {
+	display: flex;
+	justify-content: center;
+	gap: 0.75rem;
+	margin: 0 auto 1.5rem;
+}
+
+.language-toggle button {
+	border: 1px solid var(--border-color);
+	background: rgba(255, 255, 255, 0.7);
+	color: var(--text-color);
+	padding: 0.55rem 1rem;
+	border-radius: 999px;
+	font-family: var(--font-accent);
+	font-size: 0.8rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: var(--transition-smooth);
+}
+
+.language-toggle button.active {
+	background: var(--accent-green);
+	border-color: var(--accent-green);
+	color: white;
+	box-shadow: 0 10px 25px rgba(139, 155, 126, 0.2);
+}
+
 .page-header-image {
 	margin: 0 auto 3rem;
 	max-width: 900px;

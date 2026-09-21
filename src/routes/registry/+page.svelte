@@ -1,5 +1,27 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
+ import { language } from '$lib/stores/language';
+
+ const translations = {
+  en: {
+   title: 'Wedding Registry',
+   intro: [
+	'Your presence at our wedding is the greatest gift of all.',
+	"However, if you wish to honor us with a gift, we've created a registry for your convenience."
+   ],
+   button: 'View Our Registry'
+  },
+  es: {
+   title: 'Mesa de Regalos',
+   intro: [
+	'Su presencia en nuestra boda es el mejor regalo de todos.',
+	'Sin embargo, si desea honrarnos con un regalo, hemos creado una mesa de regalos para su comodidad.'
+   ],
+   button: 'Ver Nuestra Mesa de Regalos'
+  }
+ };
+
+ $: currentTranslations = translations[$language];
 
 	function removeZolaInjectedNodes() {
 		if (typeof document === 'undefined') return;
@@ -39,12 +61,12 @@
 
 <div class="registry-page">
 	<div class="page-title">
-		<div>Wedding Registry</div>
+		<div>{currentTranslations.title}</div>
 	</div>
 
 	<div class="registry-intro">
-		<p>Your presence at our wedding is the greatest gift of all.</p>
-		<p>However, if you wish to honor us with a gift, we've created a registry for your convenience.</p>
+		<p>{currentTranslations.intro[0]}</p>
+		<p>{currentTranslations.intro[1]}</p>
 	</div>
 
 	<div class="registry-container">
@@ -55,7 +77,7 @@
 			on:click|preventDefault={() => window.open('https://www.zola.com/registry/evelinandmatt2025', '_blank', 'noopener,noreferrer')}
 			rel="noopener noreferrer"
 		>
-			<span class="button-text">View Our Registry</span>
+			<span class="button-text">{currentTranslations.button}</span>
 			<span class="button-icon">→</span>
 		</a>
 	</div>

@@ -1,7 +1,7 @@
 import { e as escape_html } from "../../chunks/attributes.js";
 import "clsx";
-import { u as pop, s as push } from "../../chunks/index.js";
-import { p as page } from "../../chunks/index2.js";
+import { B as pop, z as push } from "../../chunks/index2.js";
+import { p as page } from "../../chunks/index3.js";
 function Error($$payload, $$props) {
   push();
   $$payload.out += `<h1>${escape_html(page.status)}</h1> <p>${escape_html(page.error?.message)}</p>`;
