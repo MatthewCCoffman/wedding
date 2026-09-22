@@ -61,17 +61,15 @@
 	.countdown {
 		font-family: var(--font-accent);
 		color: var(--text-color);
-		background: linear-gradient(135deg, 
-			rgba(255, 255, 255, 0.95), 
-			rgba(232, 223, 213, 0.4));
-		padding: 2.5rem 3rem;
+		background: transparent;
+		padding: 1.5rem 1rem;
 		border: 1px solid var(--border-color);
-		border-radius: 1rem;
+		border-radius: 0;
 		display: flex;
 		gap: 2.5rem;
 		justify-content: center;
 		align-items: center;
-		box-shadow: 0 15px 40px rgba(139, 115, 85, 0.12);
+		box-shadow: none;
 		flex-wrap: wrap;
 		max-width: 700px;
 		margin: 2rem auto;
@@ -80,7 +78,7 @@
 
 	.countdown:hover {
 		box-shadow: 0 20px 50px rgba(184, 153, 104, 0.3);
-		transform: translateY(-3px);
+		transform: none;
 	}
 
 	.unit {
@@ -95,10 +93,10 @@
 	}
 
 	.circle {
-		background: var(--background-color);
-		border: 2px solid var(--accent-green);
+		background: transparent;
+		border: 1px solid var(--accent-green);
 		color: var(--accent-green-dark);
-		border-radius: 50%;
+		border-radius: 0;
 		width: 85px;
 		height: 85px;
 		display: flex;
@@ -107,7 +105,7 @@
 		font-size: 2rem;
 		font-weight: 400;
 		margin: 0 auto 0.75rem auto;
-		box-shadow: 0 5px 20px rgba(139, 155, 126, 0.15);
+		box-shadow: none;
 		transition: var(--transition-smooth);
 		position: relative;
 	}

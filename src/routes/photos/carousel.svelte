@@ -1,6 +1,23 @@
 <script>
+  import { onMount } from 'svelte';
+
   export let photos = [];
+  export let autoplay = false;
+  export let showControls = true;
+  export let showThumbnails = true;
+  export let fullBleed = false;
+  export let interval = 5000;
   let currentIndex = 0;
+
+  onMount(() => {
+    if (!autoplay || photos.length < 2) return;
+
+    const timer = setInterval(() => {
+      next();
+    }, interval);
+
+    return () => clearInterval(timer);
+  });
 
   function next() {
     currentIndex = (currentIndex + 1) % photos.length;
@@ -54,14 +71,28 @@
   overflow: hidden;
 }
 
+.carousel.full-bleed {
+  max-width: none;
+  width: 100%;
+  height: min(78vh, 850px);
+}
+
+.carousel.full-bleed .image {
+  object-fit: contain;
+  object-position: center;
+  background: var(--primary-color);
+}
+
 .image-container {
   display: flex;
   transition: transform 0.5s ease;
   width: 100%;
+  height: 100%;
 }
 
 .image {
   min-width: 100%;
+	height: 100%;
   object-fit: cover;
   object-position: center top;
 }
@@ -132,7 +163,7 @@
 }
 </style>
 
-<div class="carousel">
+<div class="carousel" class:full-bleed={fullBleed}>
   <div
     class="image-container"
     role="button"
@@ -152,10 +183,13 @@
     {/each}
   </div>
 
-  <button class="button prev" type="button" on:click={prev} aria-label="Previous photo">&larr;</button>
-  <button class="button next" type="button" on:click={next} aria-label="Next photo">&rarr;</button>
+  {#if showControls}
+    <button class="button prev" type="button" on:click={prev} aria-label="Previous photo">&larr;</button>
+    <button class="button next" type="button" on:click={next} aria-label="Next photo">&rarr;</button>
+  {/if}
 </div>
 
+{#if showThumbnails}
 <div class="gallery" aria-label="Photo thumbnails">
   {#each photos as photo, i (photo)}
     <button
@@ -169,3 +203,4 @@
     </button>
   {/each}
 </div>
+{/if}

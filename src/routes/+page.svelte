@@ -1,7 +1,12 @@
 <script lang="ts">
 	import Countdown from '../lib/components/countdown.svelte';
+	import StoryPage from './our_story/+page.svelte';
+	import PhotosPage from './photos/+page.svelte';
+	import VenuePage from './venue/+page.svelte';
+	import RegistryPage from './registry/+page.svelte';
+	import RsvpPage from './rsvp/+page.svelte';
 	import { language } from '$lib/stores/language';
-	import welcome from '$lib/images/BAD39E09-7157-485A-9A02-3A0C03C3A660.jpeg';
+	import meadowVideo from '$lib/images/wedding-meadow.mp4';
 
 	const translations = {
 		en: {
@@ -22,17 +27,13 @@
 	<meta name="description" content={$language === 'en' ? 'wedding2026' : 'boda2026'} />
 </svelte:head>
 
-<div class="language-toggle" aria-label="Language switcher">
-	<button type="button" class:active={$language === 'en'} on:click={() => ($language = 'en')} aria-pressed={$language === 'en'}>
-		EN
-	</button>
-	<button type="button" class:active={$language === 'es'} on:click={() => ($language = 'es')} aria-pressed={$language === 'es'}>
-		ES
-	</button>
-</div>
-
 <div class="page-header-image">
-    <img src={welcome} alt={currentLanguage.alt} />
+	<video class="hero-video" src={meadowVideo} autoplay muted loop playsinline aria-label={currentLanguage.alt}></video>
+    <div class="hero-caption">
+		<span>{$language === 'en' ? 'The Wedding of' : 'La Boda de'}</span>
+		<strong>Evelin <em>&amp;</em> Matthew</strong>
+		<span>{$language === 'en' ? 'November 07, 2026' : '07 de noviembre de 2026'} <em class="detail-separator">&bull;</em> {$language === 'en' ? 'Hidalgo, Mexico' : 'Hidalgo, México'}</span>
+	</div>
 </div>
 
 <div class="page-title">
@@ -40,70 +41,103 @@
 </div>
 <Countdown language={$language} />
 
+<section id="story" class="scroll-section">
+	<StoryPage />
+</section>
+
+<section id="photos" class="scroll-section">
+	<PhotosPage />
+</section>
+
+<section id="venue" class="scroll-section">
+	<VenuePage />
+</section>
+
+<section id="registry" class="scroll-section">
+	<RegistryPage />
+</section>
+
+<section id="rsvp" class="scroll-section">
+	<RsvpPage />
+</section>
+
 <style>
-.language-toggle {
-	display: flex;
-	justify-content: center;
-	gap: 0.75rem;
-	margin: 0 auto 1.5rem;
-}
-
-.language-toggle button {
-	border: 1px solid var(--border-color);
-	background: rgba(255, 255, 255, 0.7);
-	color: var(--text-color);
-	padding: 0.55rem 1rem;
-	border-radius: 999px;
-	font-family: var(--font-accent);
-	font-size: 0.8rem;
-	letter-spacing: 0.12em;
-	text-transform: uppercase;
-	cursor: pointer;
-	transition: var(--transition-smooth);
-}
-
-.language-toggle button.active {
-	background: var(--accent-green);
-	border-color: var(--accent-green);
-	color: white;
-	box-shadow: 0 10px 25px rgba(139, 155, 126, 0.2);
-}
-
 .page-header-image {
-	margin: 0 auto 3rem;
-	max-width: 900px;
+	width: 100vw;
+	max-width: none;
+	margin: 0 0 3rem calc(50% - 50vw);
 	position: relative;
+	background: var(--background-color);
 }
 
 .page-header-image::before {
-	content: '';
-	position: absolute;
-	top: -15px;
-	left: -15px;
-	right: 15px;
-	bottom: 15px;
-	border: 2px solid var(--accent-light);
-	border-radius: 1rem;
-	z-index: -1;
-	opacity: 0.5;
+	display: none;
 }
 
-.page-header-image img {
-	max-width: 100%;
-	height: auto;
-	border-radius: 0.75rem;
-	box-shadow: 0 20px 60px rgba(139, 115, 85, 0.2);
+.hero-video {
+	width: 100%;
+	height: min(78vh, 850px);
+	border-radius: 0;
+	box-shadow: none;
 	object-fit: cover;
+	display: block;
+	object-position: center;
+	background: var(--primary-color);
 	transition: var(--transition-smooth);
 }
 
-.page-header-image img:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 25px 70px rgba(139, 115, 85, 0.3);
+.hero-video:hover {
+	transform: none;
+}
+
+.hero-caption {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.35rem;
+	color: #fff;
+	text-align: center;
+	text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+	white-space: nowrap;
+		max-width: calc(100% - 2rem);
+}
+
+.hero-caption span {
+	font-family: var(--font-accent);
+	font-size: 0.65rem;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+}
+
+.hero-caption strong {
+	font-family: var(--font-script);
+	font-size: clamp(2.8rem, 7vw, 5.5rem);
+	font-weight: 400;
+	line-height: 0.9;
+}
+
+.hero-caption em {
+	color: #e2b99f;
+	font-weight: 300;
 }
 
 .page-title {
 	margin: 3rem 0 2rem;
+}
+
+.scroll-section {
+	border-top: 1px solid var(--border-color);
+	margin-top: 5rem;
+	padding-top: 4rem;
+	scroll-margin-top: 1.5rem;
+}
+
+.scroll-section :global(.page-title) {
+	margin-top: 0;
 }
 
 .page-title div {
@@ -142,20 +176,39 @@
 	}
 
 	.page-header-image {
-		margin-top: 1.5rem;
-		margin-bottom: 2rem;
+		margin-top: 1rem;
+		margin-bottom: 1.5rem;
 	}
 
 	.page-header-image::before {
-		top: -10px;
-		left: -10px;
-		right: 10px;
-		bottom: 10px;
+		display: none;
 	}
 
-	.page-header-image img {
-		border-radius: 0.5rem;
-		box-shadow: 0 15px 40px rgba(139, 115, 85, 0.2);
+	.hero-video {
+		border-radius: 0;
+		height: min(74svh, 680px);
+		object-fit: cover;
+		object-position: center center;
+	}
+
+	.page-header-image :global(.carousel) {
+		height: min(74svh, 680px);
+	}
+
+	.hero-caption {
+		gap: 0.2rem;
+		white-space: normal;
+		width: calc(100% - 2rem);
+	}
+
+	.hero-caption span {
+		font-size: 0.55rem;
+		letter-spacing: 0.14em;
+	}
+
+	.hero-caption strong {
+		font-size: clamp(2.5rem, 13vw, 4rem);
+		line-height: 0.95;
 	}
 }
 </style>

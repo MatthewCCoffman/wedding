@@ -1,29 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap');
 
 :root {
-	font-family: 'Crimson Text', 'Georgia', serif;
+	font-family: 'Cormorant Garamond', Georgia, serif;
 	--font-heading: 'Cormorant Garamond', 'Playfair Display', serif;
+	--font-script: 'Pinyon Script', cursive;
 	--font-accent: 'Montserrat', sans-serif;
 	--font-mono: 'Fira Mono', monospace;
 	
 	/* Elegant Color Palette with Green Accents */
-	--background-color: #fdfbf7;
-	--primary-color: #2c2c2c;
-	--secondary-color: #8b7355;
-	--tertiary-color: #d4c5b9;
-	--accent-color: #b89968;
-	--accent-light: #e8dfd5;
-	--accent-green: #8b9b7e;
-	--accent-green-light: #a8b89b;
-	--accent-green-dark: #6b7a5e;
-	--heading-color: #3a3a3a;
-	--text-color: #5a5a5a;
-	--text-light: #7a7a7a;
-	--border-color: rgba(139, 115, 85, 0.2);
+	--background-color: #f3eee6;
+	--primary-color: #28352d;
+	--secondary-color: #65735d;
+	--tertiary-color: #d8c8b5;
+	--accent-color: #a56c52;
+	--accent-light: #dfd1c0;
+	--accent-green: #71806a;
+	--accent-green-light: #a8b19b;
+	--accent-green-dark: #4c5b4d;
+	--heading-color: #28352d;
+	--text-color: #4c5048;
+	--text-light: #77786f;
+	--border-color: rgba(40, 53, 45, 0.2);
 	
 	--column-width: 42rem;
 	--column-margin-top: 4rem;
-	--transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	--transition-smooth: all 0.3s ease;
 }
 
 html {
@@ -39,6 +40,8 @@ html body {
     width: 100%;
 	overflow-x: hidden;
 	background-color: var(--background-color);
+	background-image: radial-gradient(rgba(40, 53, 45, 0.055) 0.7px, transparent 0.7px);
+	background-size: 8px 8px;
 }
 
 html body #svelte {

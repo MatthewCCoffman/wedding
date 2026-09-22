@@ -8,20 +8,13 @@
       "_internal.js"
     ]
   },
-  "_0F865026-F796-4280-8D61-13C12E0F43E7.js": {
-    "file": "chunks/0F865026-F796-4280-8D61-13C12E0F43E7.js",
-    "name": "0F865026-F796-4280-8D61-13C12E0F43E7",
+  "_4BD7C524-6896-4C3A-A4AC-1557A6950B22.js": {
+    "file": "chunks/4BD7C524-6896-4C3A-A4AC-1557A6950B22.js",
+    "name": "4BD7C524-6896-4C3A-A4AC-1557A6950B22",
     "assets": [
-      "_app/immutable/assets/4BD7C524-6896-4C3A-A4AC-1557A6950B22.DAMAoc9e.jpeg",
+      "_app/immutable/assets/0F865026-F796-4280-8D61-13C12E0F43E7.Ucb4wbdw.jpeg",
       "_app/immutable/assets/1D8456B8-EDAF-459F-81C1-BA30DD17B01F.Pc4CgLpV.jpeg",
-      "_app/immutable/assets/0F865026-F796-4280-8D61-13C12E0F43E7.Ucb4wbdw.jpeg"
-    ]
-  },
-  "_BAD39E09-7157-485A-9A02-3A0C03C3A660.js": {
-    "file": "chunks/BAD39E09-7157-485A-9A02-3A0C03C3A660.js",
-    "name": "BAD39E09-7157-485A-9A02-3A0C03C3A660",
-    "assets": [
-      "_app/immutable/assets/BAD39E09-7157-485A-9A02-3A0C03C3A660.uQKTxogh.jpeg"
+      "_app/immutable/assets/4BD7C524-6896-4C3A-A4AC-1557A6950B22.DAMAoc9e.jpeg"
     ]
   },
   "_attributes.js": {
@@ -216,13 +209,13 @@
     "file": "_app/immutable/assets/F83C7893-82FB-4257-815D-4FBB8CA5D2E0.bh3uzMOk.jpeg",
     "src": "src/lib/images/F83C7893-82FB-4257-815D-4FBB8CA5D2E0.jpeg"
   },
-  "src/lib/images/Facetune_19-06-2025-18-08-07.jpeg": {
-    "file": "_app/immutable/assets/Facetune_19-06-2025-18-08-07.DVY4d2rO.jpeg",
-    "src": "src/lib/images/Facetune_19-06-2025-18-08-07.jpeg"
-  },
   "src/lib/images/download.png": {
     "file": "_app/immutable/assets/download.69tgjITe.png",
     "src": "src/lib/images/download.png"
+  },
+  "src/lib/images/wedding-meadow.mp4": {
+    "file": "_app/immutable/assets/wedding-meadow.DVyNHFet.mp4",
+    "src": "src/lib/images/wedding-meadow.mp4"
   },
   "src/routes/+layout.svelte": {
     "file": "entries/pages/_layout.svelte.js",
@@ -236,10 +229,7 @@
       "_attributes.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.CNkqRbWz.css"
-    ],
-    "assets": [
-      "_app/immutable/assets/download.69tgjITe.png"
+      "_app/immutable/assets/_layout.Q1w_Hnfc.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -250,11 +240,18 @@
     "imports": [
       "_index2.js",
       "_attributes.js",
-      "_language.js",
-      "_BAD39E09-7157-485A-9A02-3A0C03C3A660.js"
+      "src/routes/our_story/+page.svelte",
+      "src/routes/photos/+page.svelte",
+      "src/routes/venue/+page.svelte",
+      "src/routes/registry/+page.svelte",
+      "src/routes/rsvp/+page.svelte",
+      "_language.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.DeGnpgPh.css"
+      "_app/immutable/assets/_page.BdqXIMx-.css"
+    ],
+    "assets": [
+      "_app/immutable/assets/wedding-meadow.DVyNHFet.mp4"
     ]
   },
   "src/routes/+page.ts": {
@@ -292,7 +289,7 @@
     "isEntry": true,
     "imports": [
       "_attributes.js",
-      "_0F865026-F796-4280-8D61-13C12E0F43E7.js"
+      "_4BD7C524-6896-4C3A-A4AC-1557A6950B22.js"
     ],
     "css": [
       "_app/immutable/assets/_page.UKIvOa6S.css"
@@ -339,11 +336,10 @@
       "_index2.js",
       "_attributes.js",
       "_language.js",
-      "_0F865026-F796-4280-8D61-13C12E0F43E7.js",
-      "_BAD39E09-7157-485A-9A02-3A0C03C3A660.js"
+      "_4BD7C524-6896-4C3A-A4AC-1557A6950B22.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.DcOQykBD.css"
+      "_app/immutable/assets/_page.B248b6Dq.css"
     ],
     "assets": [
       "_app/immutable/assets/062DAEB1-074F-4D90-B101-378E23FE0F8A.LaI1fBHD.jpeg",
@@ -367,10 +363,10 @@
       "_app/immutable/assets/9FABAAFB-583D-4718-A068-56CD09104678.D_0PosBa.jpeg",
       "_app/immutable/assets/A5188E9E-D6CB-43FE-BB90-D4A2E77B9C37.Cr-cIq1H.jpeg",
       "_app/immutable/assets/B5493053-FA34-437B-815D-72EA629C8456.Bo0rttsM.jpeg",
+      "_app/immutable/assets/BAD39E09-7157-485A-9A02-3A0C03C3A660.uQKTxogh.jpeg",
       "_app/immutable/assets/F4FDF068-3001-4860-AC23-0D167013B787.BswYYqR2.jpeg",
       "_app/immutable/assets/F51935B0-65EF-4C57-9BC1-BFBE713D3AE6.B8dQ2nE0.jpeg",
-      "_app/immutable/assets/F83C7893-82FB-4257-815D-4FBB8CA5D2E0.bh3uzMOk.jpeg",
-      "_app/immutable/assets/Facetune_19-06-2025-18-08-07.DVY4d2rO.jpeg"
+      "_app/immutable/assets/F83C7893-82FB-4257-815D-4FBB8CA5D2E0.bh3uzMOk.jpeg"
     ]
   },
   "src/routes/photos/+page.ts": {

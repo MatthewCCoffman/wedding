@@ -21,7 +21,7 @@ function _page($$payload) {
         {
           date: "2.29.24",
           header: "OUR FIRST TRIP",
-          body: "Our first trip to Mexico was more than just a getaway—it was a meaningful step into each other’s worlds. Besides being a trip for her birthday, it was his turn to meet her family and ask for her father’s blessing! He was unsure of what to expect, but very excited. From the moment he arrived, they welcomed him with open arms, warm smiles, and hearts full of love. We spent our days exploring her hometown, sharing homemade meals, and laughing late into the night with family who quickly became part of our family. He asked her father, Isai, for his blessing to marry his daughter and Isai said yes!"
+          body: "Our first trip to Mexico was more than just a getaway—it was a meaningful step into each other’s worlds. Besides being a trip for her birthday, it was his turn to meet her family and ask for her father’s blessing! He was unsure of what to expect, but very excited. From the moment he arrived, they welcomed him with open arms, warm smiles, and hearts full of love. We spent our days exploring her hometown, sharing homemade meals, and laughing late into the night with family. He asked her father, Isai, for his blessing to marry his daughter and Isai said yes!"
         },
         {
           date: "12.29.24",
@@ -51,7 +51,7 @@ function _page($$payload) {
         {
           date: "2.29.24",
           header: "NUESTRO PRIMER VIAJE",
-          body: "Nuestro primer viaje a México fue más que un simple escape: fue un paso significativo hacia cada uno de nuestros mundos. Además de ser un viaje por su cumpleaños, era su turno de conocer a su familia y pedir la bendición de su padre. No sabía qué esperar, pero estaba muy emocionado. Desde el momento en que llegó, lo recibieron con los brazos abiertos, sonrisas cálidas y corazones llenos de amor. Pasamos nuestros días explorando su pueblo natal, compartiendo comidas caseras y riendo hasta tarde con una familia que rápidamente se volvió parte de la nuestra. Le pidió a su padre, Isai, su bendición para casarse con su hija y Isai dijo que sí."
+          body: "Nuestro primer viaje a México fue más que un simple escape: fue un paso significativo hacia cada uno de nuestros mundos. Además de ser un viaje por su cumpleaños, era su turno de conocer a su familia y pedir la bendición de su padre. No sabía qué esperar, pero estaba muy emocionado. Desde el momento en que llegó, lo recibieron con los brazos abiertos, sonrisas cálidas y corazones llenos de amor. Pasamos nuestros días explorando su pueblo natal, compartiendo comidas caseras y riendo hasta tarde con la familia. Le pidió a su padre, Isai, su bendición para casarse con su hija y Isai dijo que sí."
         },
         {
           date: "12.29.24",

@@ -1,26 +1,51 @@
-import { J as fallback, N as ensure_array_like, O as attr_style, E as attr_class, K as bind_props, B as pop, z as push, P as stringify, D as store_get, F as unsubscribe_stores } from "../../../chunks/index2.js";
+import { J as fallback, N as ensure_array_like, E as attr_class, O as attr_style, K as bind_props, B as pop, z as push, P as stringify, D as store_get, F as unsubscribe_stores } from "../../../chunks/index2.js";
 import { a as attr, e as escape_html } from "../../../chunks/attributes.js";
 import { l as language } from "../../../chunks/language.js";
-import { b as pic2, a as pic6, p as pic10 } from "../../../chunks/0F865026-F796-4280-8D61-13C12E0F43E7.js";
-import { p as pic25 } from "../../../chunks/BAD39E09-7157-485A-9A02-3A0C03C3A660.js";
+import { b as pic3$1, a as pic2, p as pic1$1 } from "../../../chunks/4BD7C524-6896-4C3A-A4AC-1557A6950B22.js";
 function Carousel($$payload, $$props) {
   push();
   let photos = fallback($$props["photos"], () => [], true);
+  let autoplay = fallback($$props["autoplay"], false);
+  let showControls = fallback($$props["showControls"], true);
+  let showThumbnails = fallback($$props["showThumbnails"], true);
+  let fullBleed = fallback($$props["fullBleed"], false);
+  let interval = fallback($$props["interval"], 5e3);
   let currentIndex = 0;
   const each_array = ensure_array_like(photos);
-  const each_array_1 = ensure_array_like(photos);
-  $$payload.out += `<div class="carousel svelte-1b8srcg"><div class="image-container svelte-1b8srcg" role="button" tabindex="0" aria-label="Wedding photo carousel"${attr_style(`transform: translateX(-${stringify(currentIndex * 100)}%);`)}><!--[-->`;
+  $$payload.out += `<div${attr_class("carousel svelte-4iylbs", void 0, { "full-bleed": fullBleed })}><div class="image-container svelte-4iylbs" role="button" tabindex="0" aria-label="Wedding photo carousel"${attr_style(`transform: translateX(-${stringify(currentIndex * 100)}%);`)}><!--[-->`;
   for (let i = 0, $$length = each_array.length; i < $$length; i++) {
     let photo = each_array[i];
-    $$payload.out += `<img class="image svelte-1b8srcg"${attr("src", photo)}${attr("alt", `Wedding photo ${i + 1}`)}/>`;
+    $$payload.out += `<img class="image svelte-4iylbs"${attr("src", photo)}${attr("alt", `Wedding photo ${i + 1}`)}/>`;
   }
-  $$payload.out += `<!--]--></div> <button class="button prev svelte-1b8srcg" type="button" aria-label="Previous photo">←</button> <button class="button next svelte-1b8srcg" type="button" aria-label="Next photo">→</button></div> <div class="gallery svelte-1b8srcg" aria-label="Photo thumbnails"><!--[-->`;
-  for (let i = 0, $$length = each_array_1.length; i < $$length; i++) {
-    let photo = each_array_1[i];
-    $$payload.out += `<button type="button"${attr_class(`thumbnail ${stringify(i === currentIndex ? "active" : "")}`, "svelte-1b8srcg")}${attr("aria-label", `View photo ${i + 1}`)}${attr("aria-pressed", i === currentIndex)}><img${attr("src", photo)}${attr("alt", `Thumbnail ${i + 1}`)} class="svelte-1b8srcg"/></button>`;
+  $$payload.out += `<!--]--></div> `;
+  if (showControls) {
+    $$payload.out += "<!--[-->";
+    $$payload.out += `<button class="button prev svelte-4iylbs" type="button" aria-label="Previous photo">←</button> <button class="button next svelte-4iylbs" type="button" aria-label="Next photo">→</button>`;
+  } else {
+    $$payload.out += "<!--[!-->";
   }
-  $$payload.out += `<!--]--></div>`;
-  bind_props($$props, { photos });
+  $$payload.out += `<!--]--></div> `;
+  if (showThumbnails) {
+    $$payload.out += "<!--[-->";
+    const each_array_1 = ensure_array_like(photos);
+    $$payload.out += `<div class="gallery svelte-4iylbs" aria-label="Photo thumbnails"><!--[-->`;
+    for (let i = 0, $$length = each_array_1.length; i < $$length; i++) {
+      let photo = each_array_1[i];
+      $$payload.out += `<button type="button"${attr_class(`thumbnail ${stringify(i === currentIndex ? "active" : "")}`, "svelte-4iylbs")}${attr("aria-label", `View photo ${i + 1}`)}${attr("aria-pressed", i === currentIndex)}><img${attr("src", photo)}${attr("alt", `Thumbnail ${i + 1}`)} class="svelte-4iylbs"/></button>`;
+    }
+    $$payload.out += `<!--]--></div>`;
+  } else {
+    $$payload.out += "<!--[!-->";
+  }
+  $$payload.out += `<!--]-->`;
+  bind_props($$props, {
+    photos,
+    autoplay,
+    showControls,
+    showThumbnails,
+    fullBleed,
+    interval
+  });
   pop();
 }
 const pic1 = "/_app/immutable/assets/062DAEB1-074F-4D90-B101-378E23FE0F8A.LaI1fBHD.jpeg";
@@ -44,48 +69,47 @@ const pic21 = "/_app/immutable/assets/918428E3-CCCC-4905-95CB-A9FF8F044545.C8gNP
 const pic22 = "/_app/immutable/assets/9FABAAFB-583D-4718-A068-56CD09104678.D_0PosBa.jpeg";
 const pic23 = "/_app/immutable/assets/A5188E9E-D6CB-43FE-BB90-D4A2E77B9C37.Cr-cIq1H.jpeg";
 const pic24 = "/_app/immutable/assets/B5493053-FA34-437B-815D-72EA629C8456.Bo0rttsM.jpeg";
+const pic25 = "/_app/immutable/assets/BAD39E09-7157-485A-9A02-3A0C03C3A660.uQKTxogh.jpeg";
 const pic26 = "/_app/immutable/assets/F4FDF068-3001-4860-AC23-0D167013B787.BswYYqR2.jpeg";
 const pic27 = "/_app/immutable/assets/F51935B0-65EF-4C57-9BC1-BFBE713D3AE6.B8dQ2nE0.jpeg";
 const pic28 = "/_app/immutable/assets/F83C7893-82FB-4257-815D-4FBB8CA5D2E0.bh3uzMOk.jpeg";
-const pic29 = "/_app/immutable/assets/Facetune_19-06-2025-18-08-07.DVY4d2rO.jpeg";
+const weddingPhotos = [
+  pic1,
+  pic3$1,
+  pic3,
+  pic4,
+  pic5,
+  pic2,
+  pic7,
+  pic8,
+  pic9,
+  pic1$1,
+  pic11,
+  pic12,
+  pic13,
+  pic14,
+  pic15,
+  pic16,
+  pic17,
+  pic18,
+  pic19,
+  pic20,
+  pic21,
+  pic22,
+  pic23,
+  pic24,
+  pic25,
+  pic26,
+  pic27,
+  pic28
+];
 function _page($$payload) {
   var $$store_subs;
   let pageTitle;
-  const images = [
-    pic1,
-    pic2,
-    pic3,
-    pic4,
-    pic5,
-    pic6,
-    pic7,
-    pic8,
-    pic9,
-    pic10,
-    pic11,
-    pic12,
-    pic13,
-    pic14,
-    pic15,
-    pic16,
-    pic17,
-    pic18,
-    pic19,
-    pic20,
-    pic21,
-    pic22,
-    pic23,
-    pic24,
-    pic25,
-    pic26,
-    pic27,
-    pic28,
-    pic29
-  ];
   const pageTitles = { en: "Photos of Us", es: "Fotos de Nosotros" };
   pageTitle = pageTitles[store_get($$store_subs ??= {}, "$language", language)];
   $$payload.out += `<div class="page-title"><div>${escape_html(pageTitle)}</div></div> <div class="page-content">`;
-  Carousel($$payload, { photos: images });
+  Carousel($$payload, { photos: weddingPhotos });
   $$payload.out += `<!----></div>`;
   if ($$store_subs) unsubscribe_stores($$store_subs);
 }

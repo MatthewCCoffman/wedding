@@ -30,26 +30,7 @@
 	}
 </script>
 
-	<div class="app-header desktop">		
-		<div class="logo-wrapper">
-			<img src={logo} alt="Wedding Logo" />
-		</div>
-		Jailene Evelin Fierro & Matthew Cruz Coffman
-	</div>
-	<div class="app-header mobile">		
-		<div class="logo-wrapper">
-			<img src={logo} alt="Wedding Logo" />
-		</div>
-		Evelin & Matthew
-	</div>
-			<div class="primary-section">
-			<div class="section-info">
-				<span class="section-date">{$language === 'en' ? 'November 07, 2026' : '07 de noviembre de 2026'}</span>
-				<span class="separator">&bull;</span>
-				<span class="section-date">{$language === 'en' ? 'Hgo, Mexico' : 'Hgo, México'}</span>
-			</div>
-		</div>
-	
+
 	<div class=mobile>
 
 		<div class="navbar-container">
@@ -69,28 +50,32 @@
 							<a href="/" on:click={closeMenu}>{navText.home}</a>
 						</li>
 						<li aria-current={page.url.pathname.startsWith('/our_story') ? 'page' : undefined}>
-							<a href="/our_story" on:click={closeMenu}>{navText.story}</a>
+							<a href="/#story" on:click={closeMenu}>{navText.story}</a>
 						</li>
 						<!-- <li aria-current={page.url.pathname.startsWith('/itinerary') ? 'page' : undefined}>
 							<a href="/itinerary" on:click={closeMenu}>Itinerary</a>
 						</li> -->
 						<li aria-current={page.url.pathname.startsWith('/photos') ? 'page' : undefined}>
-							<a href="/photos" on:click={closeMenu}>{navText.photos}</a>
+							<a href="/#photos" on:click={closeMenu}>{navText.photos}</a>
 						</li>
 						<li aria-current={page.url.pathname.startsWith('/venue') ? 'page' : undefined}>
-							<a href="/venue" on:click={closeMenu}>{navText.venue}</a>
+							<a href="/#venue" on:click={closeMenu}>{navText.venue}</a>
 						</li>
 						<!-- <li aria-current={page.url.pathname.startsWith('/faq') ? 'page' : undefined}>
 							<a href="/faq" on:click={closeMenu}>FAQ</a>
 						</li> -->
 						<li aria-current={page.url.pathname.startsWith('/registry') ? 'page' : undefined}>
-							<a href="/registry" on:click={closeMenu}>{navText.registry}</a>
+							<a href="/#registry" on:click={closeMenu}>{navText.registry}</a>
 						</li>
 						<li aria-current={page.url.pathname.startsWith('/rsvp') ? 'page' : undefined}>
-							<a href="/rsvp" on:click={closeMenu}>{navText.rsvp}</a>
+							<a href="/#rsvp" on:click={closeMenu}>{navText.rsvp}</a>
 						</li>
 					</ul>
 				</nav>
+			</div>
+			<div class="language-toggle" aria-label="Language switcher">
+				<button type="button" class:active={$language === 'en'} on:click={() => ($language = 'en')} aria-pressed={$language === 'en'}>EN</button>
+				<button type="button" class:active={$language === 'es'} on:click={() => ($language = 'es')} aria-pressed={$language === 'es'}>ES</button>
 			</div>
 		</div>
 	</div>
@@ -102,30 +87,34 @@
 						<a href="/">{navText.home}</a>
 					</li>
 					<li aria-current={page.url.pathname.startsWith('/our_story') ? 'page' : undefined}>
-						<a href="/our_story">{navText.story}</a>
+						<a href="/#story">{navText.story}</a>
 					</li>
 
 					<!-- <li aria-current={page.url.pathname.startsWith('/itinerary') ? 'page' : undefined}>
 						<a href="/itinerary">Itinerary</a>
 					</li> -->
 					<li aria-current={page.url.pathname.startsWith('/photos') ? 'page' : undefined}>
-						<a href="/photos">{navText.photos}</a>
+						<a href="/#photos">{navText.photos}</a>
 					</li>
 					<li aria-current={page.url.pathname.startsWith('/venue') ? 'page' : undefined}>
-						<a href="/venue">{navText.venue}</a>
+						<a href="/#venue">{navText.venue}</a>
 					</li>
 					<!-- <li aria-current={page.url.pathname.startsWith('/faq') ? 'page' : undefined}>
 						<a href="/faq">FAQ</a>
 					</li> -->
 					<li aria-current={page.url.pathname.startsWith('/registry') ? 'page' : undefined}>
-						<a href="/registry">{navText.registry}</a>
+						<a href="/#registry">{navText.registry}</a>
 					</li>
 					<li aria-current={page.url.pathname.startsWith('/rsvp') ? 'page' : undefined}>
-						<a href="/rsvp">{navText.rsvp}</a>
+						<a href="/#rsvp">{navText.rsvp}</a>
 					</li>
 					<!-- You can add more nav links here -->
 				</ul>
 			</nav>
+			<div class="language-toggle" aria-label="Language switcher">
+				<button type="button" class:active={$language === 'en'} on:click={() => ($language = 'en')} aria-pressed={$language === 'en'}>EN</button>
+				<button type="button" class:active={$language === 'es'} on:click={() => ($language = 'es')} aria-pressed={$language === 'es'}>ES</button>
+			</div>
 		</div>
 	</div>
 
@@ -165,16 +154,17 @@
 
 	.primary-section {
 		text-align: center;
-		font-style: italic;
-		font-weight:lighter;
-		color: #ffffff;
-		font-size: 1rem;
-		margin-bottom: 3rem;
+		font-weight: 400;
+		color: var(--text-light);
+		font-size: 0.72rem;
+		margin-bottom: 1.5rem;
+		text-transform: uppercase;
+		letter-spacing: 0.18em;
 	}
 
 	.section-date {
-		color: rgb(114, 114, 114);
-		font-size: 1rem;
+		color: var(--text-light);
+		font-size: 0.72rem;
 		margin-bottom: 0.3rem;
 		letter-spacing: 0.1em;
 	}
@@ -182,8 +172,11 @@
 		width: 100%;
 		font-family: 'Montserrat', sans-serif;
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		align-items: center;
+		justify-content: space-between;
+		box-sizing: border-box;
+		padding: 1.5rem 2rem 0;
 	}
 
 	nav {
@@ -195,14 +188,20 @@
 		margin-bottom: 15px;
 	}
 
+	.desktop .navbar-container nav {
+		width: auto;
+		max-width: none;
+		justify-content: flex-start;
+		margin: 0;
+	}
+
 	.logo-wrapper img {
-		height: 175px;
-		width: 150px;
-		border-radius: 25%;
+		height: 76px;
+		width: 66px;
+		border-radius: 0;
 		object-fit: contain;
-		padding-right: 0%;
-		box-shadow: 0 0 5px rgba(0,0,0,0.2);
-		margin-bottom:50px;
+		box-shadow: none;
+		margin-bottom: 0.5rem;
 	}
 
 	nav ul {
@@ -211,7 +210,33 @@
 		flex-direction: row;
 		gap: 1rem;
 		margin: 0;
-		margin-right: 58px;
+		margin: 0;
+	}
+
+	.language-toggle {
+		display: flex;
+		gap: 0.75rem;
+		flex-shrink: 0;
+	}
+
+	.language-toggle button {
+		border: 1px solid var(--border-color);
+		background: transparent;
+		color: var(--text-color);
+		padding: 0.55rem 1rem;
+		border-radius: 0;
+		font-family: var(--font-accent);
+		font-size: 0.8rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		cursor: pointer;
+		transition: var(--transition-smooth);
+	}
+
+	.language-toggle button.active {
+		background: var(--primary-color);
+		border-color: var(--primary-color);
+		color: #fff;
 	}
 
 	nav li a {
@@ -231,17 +256,34 @@
 	}
 
 	.app-header {
-		font-family: 'Bodoni Moda', serif;
-		font-size: 42px;
-		line-height: 2rem;
-		margin-top: 50px;
-		color:  rgb(71, 70, 70);
+		font-family: var(--font-heading);
+		font-size: 2.2rem;
+		line-height: 1;
+		margin-top: 1.5rem;
+		color: var(--heading-color);
 		text-align: center;
-		padding: 1rem 0;
+		padding: 0.5rem 0 1.25rem;
+		letter-spacing: 0.03em;
+	}
+
+	.couple-name span {
+		font-style: italic;
+		color: var(--accent-color);
+		padding: 0 0.15em;
+	}
+
+	.couple-name {
+		font-family: var(--font-script);
+		font-size: 2.6rem;
+		font-weight: 400;
 	}
 
 /* Mobile adjustments: smaller spacing and font */
 @media only screen and (max-width: 500px) {
+	.navbar-container {
+		padding: 1.25rem 1rem 0;
+		align-items: flex-start;
+	}
 
 	.hamburger {
 		display: flex;
@@ -257,6 +299,14 @@
 		padding: 1.5rem 0;
 		border-top: 1px solid var(--border-color);
 		box-shadow: 0 4px 15px rgba(139, 115, 85, 0.1);
+	}
+
+	.mobile .navbar-container > div:nth-of-type(1) {
+		flex: 1;
+	}
+
+	.mobile .language-toggle {
+		margin-top: 0;
 	}
 
 	nav.is-open {
@@ -276,11 +326,11 @@
 	}
 
 	.logo-wrapper img {
-		height: 175px;
-		width: 150px;
-		border-radius: 25%;		
-		box-shadow: 0 0 5px rgba(0,0,0,0.2);
-		margin-bottom:50px;
+		height: 64px;
+		width: 56px;
+		border-radius: 0;
+		box-shadow: none;
+		margin-bottom: 0.5rem;
 	}
 
   .desktop {
@@ -292,10 +342,14 @@
     font-size: 24px;
   }
   	.app-header {
-		font-family: 'Dancing Script', cursive;
-		font-size: 52px;
-		color: #000000;
+		font-family: var(--font-heading);
+		font-size: 2rem;
+		color: var(--heading-color);
 		text-align: center;
+	}
+
+	.couple-name {
+		font-size: 2.2rem;
 	}
 }
 

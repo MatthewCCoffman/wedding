@@ -77,7 +77,7 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		padding: 2rem 1.5rem;
+		padding: 1.25rem 1.5rem 3rem;
 		width: 100%;
 		max-width: 68rem;
 		margin: 0 auto;
@@ -123,6 +123,7 @@
 		justify-content: center;
 		margin: 2rem auto;
 		width: 100%;
+		letter-spacing: 0.05em;
 	}
 
 	@media (max-width: 768px) {
