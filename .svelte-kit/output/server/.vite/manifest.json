@@ -17,6 +17,10 @@
       "_app/immutable/assets/4BD7C524-6896-4C3A-A4AC-1557A6950B22.DAMAoc9e.jpeg"
     ]
   },
+  "_InvitationEnvelope.DgdHuX9N.css": {
+    "file": "_app/immutable/assets/InvitationEnvelope.DgdHuX9N.css",
+    "src": "_InvitationEnvelope.DgdHuX9N.css"
+  },
   "_attributes.js": {
     "file": "chunks/attributes.js",
     "name": "attributes"
@@ -275,7 +279,6 @@
       "_index2.js",
       "_attributes.js",
       "src/routes/our_story/+page.svelte",
-      "src/routes/photos/+page.svelte",
       "src/routes/venue/+page.svelte",
       "src/routes/registry/+page.svelte",
       "src/routes/rsvp/+page.svelte",
@@ -293,6 +296,19 @@
     "name": "entries/pages/_page.ts",
     "src": "src/routes/+page.ts",
     "isEntry": true
+  },
+  "src/routes/envelope/+page.svelte": {
+    "file": "entries/pages/envelope/_page.svelte.js",
+    "name": "entries/pages/envelope/_page.svelte",
+    "src": "src/routes/envelope/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index2.js",
+      "_attributes.js"
+    ],
+    "css": [
+      "_app/immutable/assets/InvitationEnvelope.DgdHuX9N.css"
+    ]
   },
   "src/routes/faq/+page.svelte": {
     "file": "entries/pages/faq/_page.svelte.js",
@@ -350,7 +366,7 @@
       "_attributes.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.DYAosMus.css"
+      "_app/immutable/assets/_page.HMULJVil.css"
     ]
   },
   "src/routes/our_story/+page.ts": {
@@ -419,7 +435,8 @@
       "_attributes.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.Z65Vczry.css"
+      "_app/immutable/assets/_page.BO2WpPqX.css",
+      "_app/immutable/assets/InvitationEnvelope.DgdHuX9N.css"
     ]
   },
   "src/routes/rsvp/+page.ts": {

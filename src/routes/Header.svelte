@@ -56,7 +56,7 @@
 							<a href="/itinerary" on:click={closeMenu}>Itinerary</a>
 						</li> -->
 						<li aria-current={page.url.pathname.startsWith('/photos') ? 'page' : undefined}>
-							<a href="/#photos" on:click={closeMenu}>{navText.photos}</a>
+							<a href="/photos" on:click={closeMenu}>{navText.photos}</a>
 						</li>
 						<li aria-current={page.url.pathname.startsWith('/venue') ? 'page' : undefined}>
 							<a href="/#venue" on:click={closeMenu}>{navText.venue}</a>
@@ -94,7 +94,7 @@
 						<a href="/itinerary">Itinerary</a>
 					</li> -->
 					<li aria-current={page.url.pathname.startsWith('/photos') ? 'page' : undefined}>
-						<a href="/#photos">{navText.photos}</a>
+						<a href="/photos">{navText.photos}</a>
 					</li>
 					<li aria-current={page.url.pathname.startsWith('/venue') ? 'page' : undefined}>
 						<a href="/#venue">{navText.venue}</a>

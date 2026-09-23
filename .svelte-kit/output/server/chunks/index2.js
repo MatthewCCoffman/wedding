@@ -1,5 +1,5 @@
 import { t as to_class, e as escape_html, b as to_style } from "./attributes.js";
-import { B as BROWSER } from "./false.js";
+import { D as DEV } from "./false.js";
 import "clsx";
 var is_array = Array.isArray;
 var index_of = Array.prototype.indexOf;
@@ -1047,8 +1047,8 @@ function update_effect(effect2) {
     effect2.teardown = typeof teardown2 === "function" ? teardown2 : null;
     effect2.wv = write_version;
     var dep;
-    if (BROWSER && tracing_mode_flag && (effect2.f & DIRTY) !== 0 && effect2.deps !== null) ;
-    if (BROWSER) ;
+    if (DEV && tracing_mode_flag && (effect2.f & DIRTY) !== 0 && effect2.deps !== null) ;
+    if (DEV) ;
   } finally {
     is_updating_effect = was_updating_effect;
     active_effect = previous_effect;
@@ -1334,7 +1334,7 @@ function render(component, options = {}) {
     on_destroy = [];
     payload.out += BLOCK_OPEN;
     let reset_reset_element;
-    if (BROWSER) ;
+    if (DEV) ;
     if (options.context) {
       push();
       current_component.c = options.context;

@@ -10,7 +10,7 @@ return {
 	assets: new Set(["favico.svg","favicon.svg","robots.txt"]),
 	mimeTypes: {".svg":"image/svg+xml",".txt":"text/plain"},
 	_: {
-		client: {start:"_app/immutable/entry/start.CszhEgpN.js",app:"_app/immutable/entry/app.Dqu8T25m.js",imports:["_app/immutable/entry/start.CszhEgpN.js","_app/immutable/chunks/DctaoKeS.js","_app/immutable/chunks/NIGN-ljY.js","_app/immutable/chunks/DxcfLqCq.js","_app/immutable/chunks/CAUIzWXO.js","_app/immutable/chunks/Di41yiQZ.js","_app/immutable/entry/app.Dqu8T25m.js","_app/immutable/chunks/DxcfLqCq.js","_app/immutable/chunks/CAUIzWXO.js","_app/immutable/chunks/CWj6FrbW.js","_app/immutable/chunks/NIGN-ljY.js","_app/immutable/chunks/BKFaIrlh.js","_app/immutable/chunks/Cwulpwd3.js","_app/immutable/chunks/DP0kUkzK.js","_app/immutable/chunks/Di41yiQZ.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
+		client: {start:"_app/immutable/entry/start.DqOiBsAS.js",app:"_app/immutable/entry/app.aC-JMvee.js",imports:["_app/immutable/entry/start.DqOiBsAS.js","_app/immutable/chunks/B8ubt6Jg.js","_app/immutable/chunks/V_SFHrdi.js","_app/immutable/chunks/C5vZ882h.js","_app/immutable/chunks/CXP6YjQR.js","_app/immutable/chunks/rl3PgTYx.js","_app/immutable/entry/app.aC-JMvee.js","_app/immutable/chunks/C5vZ882h.js","_app/immutable/chunks/CXP6YjQR.js","_app/immutable/chunks/CWj6FrbW.js","_app/immutable/chunks/V_SFHrdi.js","_app/immutable/chunks/DRTC_-yU.js","_app/immutable/chunks/DwP0b3M1.js","_app/immutable/chunks/DR_YegwB.js","_app/immutable/chunks/DNzOIEvL.js","_app/immutable/chunks/rl3PgTYx.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),
@@ -21,7 +21,8 @@ return {
 			__memo(() => import('./nodes/6.js')),
 			__memo(() => import('./nodes/7.js')),
 			__memo(() => import('./nodes/8.js')),
-			__memo(() => import('./nodes/9.js'))
+			__memo(() => import('./nodes/9.js')),
+			__memo(() => import('./nodes/10.js'))
 		],
 		routes: [
 			{
@@ -32,52 +33,59 @@ return {
 				endpoint: null
 			},
 			{
+				id: "/envelope",
+				pattern: /^\/envelope\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 3 },
+				endpoint: null
+			},
+			{
 				id: "/faq",
 				pattern: /^\/faq\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 3 },
+				page: { layouts: [0,], errors: [1,], leaf: 4 },
 				endpoint: null
 			},
 			{
 				id: "/itinerary",
 				pattern: /^\/itinerary\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 4 },
+				page: { layouts: [0,], errors: [1,], leaf: 5 },
 				endpoint: null
 			},
 			{
 				id: "/our_story",
 				pattern: /^\/our_story\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 5 },
+				page: { layouts: [0,], errors: [1,], leaf: 6 },
 				endpoint: null
 			},
 			{
 				id: "/photos",
 				pattern: /^\/photos\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 6 },
+				page: { layouts: [0,], errors: [1,], leaf: 7 },
 				endpoint: null
 			},
 			{
 				id: "/registry",
 				pattern: /^\/registry\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 7 },
+				page: { layouts: [0,], errors: [1,], leaf: 8 },
 				endpoint: null
 			},
 			{
 				id: "/rsvp",
 				pattern: /^\/rsvp\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 8 },
+				page: { layouts: [0,], errors: [1,], leaf: 9 },
 				endpoint: null
 			},
 			{
 				id: "/venue",
 				pattern: /^\/venue\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 9 },
+				page: { layouts: [0,], errors: [1,], leaf: 10 },
 				endpoint: null
 			}
 		],

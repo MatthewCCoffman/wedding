@@ -2,6 +2,7 @@
 	"/": [
 		"src/routes/+page.ts"
 	],
+	"/envelope": [],
 	"/faq": [
 		"src/routes/faq/+page.ts"
 	],

@@ -1,5 +1,5 @@
-import { B as BROWSER } from "./false.js";
-const dev = BROWSER;
+import { D as DEV } from "./false.js";
+const dev = DEV;
 export {
   dev as d
 };

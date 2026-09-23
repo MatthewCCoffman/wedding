@@ -155,7 +155,7 @@
 <style>
 .page-title {
 	text-align: center;
-	margin-bottom: 3rem;
+  margin-bottom: 0.75rem;
 }
 
 .page-title div {
@@ -188,7 +188,7 @@
 .page-content {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 1.5rem;
   padding: 0 1rem 3rem;
   margin: 0 auto;
   font-family: 'Georgia', serif;

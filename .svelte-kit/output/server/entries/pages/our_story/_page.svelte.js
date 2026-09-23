@@ -73,17 +73,17 @@ function _page($$payload, $$props) {
   story = storyContent[store_get($$store_subs ??= {}, "$language", language)];
   const each_array = ensure_array_like(story.entries);
   const each_array_1 = ensure_array_like(story.entries);
-  $$payload.out += `<div class="page-content svelte-1nks18q"><div class="page-title svelte-1nks18q"><div class="svelte-1nks18q">${escape_html(story.title)}</div></div> <div class="story-carousel svelte-1nks18q"><div class="story-track svelte-1nks18q"${attr_style(`--active-index: ${activeIndex}`)}><!--[-->`;
+  $$payload.out += `<div class="page-content svelte-ov2pns"><div class="page-title svelte-ov2pns"><div class="svelte-ov2pns">${escape_html(story.title)}</div></div> <div class="story-carousel svelte-ov2pns"><div class="story-track svelte-ov2pns"${attr_style(`--active-index: ${activeIndex}`)}><!--[-->`;
   for (let index = 0, $$length = each_array.length; index < $$length; index++) {
     let entry = each_array[index];
-    $$payload.out += `<div class="timeline-section svelte-1nks18q"><div class="story-copy svelte-1nks18q"><div class="section-header svelte-1nks18q">${escape_html(entry.header)}</div> <div class="section-body svelte-1nks18q">${escape_html(entry.body)}</div></div> <div class="story-photo svelte-1nks18q"><img${attr("src", weddingPhotos[storyPhotoIndexes[index]])}${attr("alt", entry.header)} loading="lazy" class="svelte-1nks18q"/></div></div>`;
+    $$payload.out += `<div class="timeline-section svelte-ov2pns"><div class="story-copy svelte-ov2pns"><div class="section-header svelte-ov2pns">${escape_html(entry.header)}</div> <div class="section-body svelte-ov2pns">${escape_html(entry.body)}</div></div> <div class="story-photo svelte-ov2pns"><img${attr("src", weddingPhotos[storyPhotoIndexes[index]])}${attr("alt", entry.header)} loading="lazy" class="svelte-ov2pns"/></div></div>`;
   }
-  $$payload.out += `<!--]--></div></div> <div class="carousel-controls svelte-1nks18q" aria-label="Story navigation"><button type="button"${attr("disabled", activeIndex === 0, true)} aria-label="Previous story" class="svelte-1nks18q">←</button> <div class="carousel-dots svelte-1nks18q"><!--[-->`;
+  $$payload.out += `<!--]--></div></div> <div class="carousel-controls svelte-ov2pns" aria-label="Story navigation"><button type="button"${attr("disabled", activeIndex === 0, true)} aria-label="Previous story" class="svelte-ov2pns">←</button> <div class="carousel-dots svelte-ov2pns"><!--[-->`;
   for (let index = 0, $$length = each_array_1.length; index < $$length; index++) {
     each_array_1[index];
-    $$payload.out += `<button type="button"${attr("aria-label", `Go to story ${index + 1}`)}${attr("aria-current", activeIndex === index ? "step" : void 0)}${attr_class("svelte-1nks18q", void 0, { "active": activeIndex === index })}></button>`;
+    $$payload.out += `<button type="button"${attr("aria-label", `Go to story ${index + 1}`)}${attr("aria-current", activeIndex === index ? "step" : void 0)}${attr_class("svelte-ov2pns", void 0, { "active": activeIndex === index })}></button>`;
   }
-  $$payload.out += `<!--]--></div> <button type="button"${attr("disabled", activeIndex === story.entries.length - 1, true)} aria-label="Next story" class="svelte-1nks18q">→</button></div></div>`;
+  $$payload.out += `<!--]--></div> <button type="button"${attr("disabled", activeIndex === story.entries.length - 1, true)} aria-label="Next story" class="svelte-ov2pns">→</button></div></div>`;
   if ($$store_subs) unsubscribe_stores($$store_subs);
   pop();
 }

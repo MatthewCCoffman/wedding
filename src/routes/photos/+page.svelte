@@ -5,8 +5,8 @@
   import { weddingPhotos } from '$lib/images/weddingPhotos';
 
   const pageTitles = {
-    en: 'Photos of Us',
-    es: 'Fotos de Nosotros'
+    en: '',
+    es: ''
   };
 
   $: pageTitle = pageTitles[$language];

@@ -1,7 +1,7 @@
+
 <script lang="ts">
 	import Countdown from '../lib/components/countdown.svelte';
 	import StoryPage from './our_story/+page.svelte';
-	import PhotosPage from './photos/+page.svelte';
 	import VenuePage from './venue/+page.svelte';
 	import RegistryPage from './registry/+page.svelte';
 	import RsvpPage from './rsvp/+page.svelte';
@@ -20,6 +20,7 @@
 	} as const;
 
 	$: currentLanguage = translations[$language];
+
 </script>
 
 <svelte:head>
@@ -43,10 +44,6 @@
 
 <section id="story" class="scroll-section">
 	<StoryPage />
-</section>
-
-<section id="photos" class="scroll-section">
-	<PhotosPage />
 </section>
 
 <section id="venue" class="scroll-section">

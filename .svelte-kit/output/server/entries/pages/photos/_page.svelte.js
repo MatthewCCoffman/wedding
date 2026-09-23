@@ -51,7 +51,7 @@ function Carousel($$payload, $$props) {
 function _page($$payload) {
   var $$store_subs;
   let pageTitle;
-  const pageTitles = { en: "Photos of Us", es: "Fotos de Nosotros" };
+  const pageTitles = { en: "", es: "" };
   pageTitle = pageTitles[store_get($$store_subs ??= {}, "$language", language)];
   $$payload.out += `<div class="page-title"><div>${escape_html(pageTitle)}</div></div> <div class="page-content">`;
   Carousel($$payload, { photos: weddingPhotos });

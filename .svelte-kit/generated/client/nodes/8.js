@@ -1,3 +1,3 @@
-import * as universal from "../../../../src/routes/rsvp/+page.ts";
+import * as universal from "../../../../src/routes/registry/+page.ts";
 export { universal };
-export { default as component } from "../../../../src/routes/rsvp/+page.svelte";
+export { default as component } from "../../../../src/routes/registry/+page.svelte";

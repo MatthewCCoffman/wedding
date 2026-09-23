@@ -1,5 +1,7 @@
 <script>
+	import { fade } from 'svelte/transition';
   import { language } from '$lib/stores/language';
+	import InvitationEnvelope from '$lib/components/InvitationEnvelope.svelte';
 
   let name = "";
   let email = "";
@@ -116,10 +118,8 @@
 </script>
 
 {#if submitted}
-	<div class="rsvp-body">
-		<div class="success-message">
-			{currentText.success}
-		</div>
+	<div class="invitation-success" in:fade={{ duration: 900 }}>
+		<InvitationEnvelope />
 	</div>
 {:else}
 	<div class="rsvp-body">

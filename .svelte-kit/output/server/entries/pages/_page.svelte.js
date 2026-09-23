@@ -1,10 +1,9 @@
 import { J as fallback, K as bind_props, B as pop, z as push, D as store_get, M as head, F as unsubscribe_stores } from "../../chunks/index2.js";
 import { e as escape_html, a as attr } from "../../chunks/attributes.js";
 import _page$1 from "./our_story/_page.svelte.js";
-import _page$2 from "./photos/_page.svelte.js";
-import _page$3 from "./venue/_page.svelte.js";
-import _page$4 from "./registry/_page.svelte.js";
-import _page$5 from "./rsvp/_page.svelte.js";
+import _page$2 from "./venue/_page.svelte.js";
+import _page$3 from "./registry/_page.svelte.js";
+import _page$4 from "./rsvp/_page.svelte.js";
 import { l as language } from "../../chunks/language.js";
 function Countdown($$payload, $$props) {
   push();
@@ -52,16 +51,14 @@ function _page($$payload) {
   });
   $$payload.out += `<!----> <section id="story" class="scroll-section svelte-1ygrc9s">`;
   _page$1($$payload);
-  $$payload.out += `<!----></section> <section id="photos" class="scroll-section svelte-1ygrc9s">`;
-  _page$2($$payload);
   $$payload.out += `<!----></section> <section id="venue" class="scroll-section svelte-1ygrc9s">`;
-  _page$3($$payload);
+  _page$2($$payload);
   $$payload.out += `<!----></section> <section id="registry" class="scroll-section svelte-1ygrc9s">`;
-  _page$4($$payload, {
+  _page$3($$payload, {
     language: store_get($$store_subs ??= {}, "$language", language)
   });
   $$payload.out += `<!----></section> <section id="rsvp" class="scroll-section svelte-1ygrc9s">`;
-  _page$5($$payload);
+  _page$4($$payload);
   $$payload.out += `<!----></section>`;
   if ($$store_subs) unsubscribe_stores($$store_subs);
 }
