@@ -1,1 +1,0 @@
-import{w as a}from"./rl3PgTYx.js";const t=()=>localStorage.getItem("wedding-language")==="es"?"es":"en",n=a(t());n.subscribe(e=>{localStorage.setItem("wedding-language",e),document.documentElement.lang=e});export{n as l};

@@ -5,32 +5,26 @@ function InvitationEnvelope($$payload, $$props) {
   push();
   let guestAllowed = fallback($$props["guestAllowed"], true);
   let guestName = fallback($$props["guestName"], "");
-  let compact = fallback($$props["compact"], false);
   let lifted = false;
   let opening = false;
   let opened = false;
-  $$payload.out += `<section${attr_class("invitation-section svelte-d7ctnn", void 0, {
-    "lifted": lifted,
-    "opening": opening,
-    "opened": opened,
-    "compact": compact
-  })}><button class="envelope-button svelte-d7ctnn" type="button" aria-label="Open Evelin and Matthew's wedding invitation"${attr("aria-expanded", opened)}><div class="envelope-shadow svelte-d7ctnn"></div> <div class="envelope svelte-d7ctnn"><div class="envelope-back svelte-d7ctnn"></div> <div class="invitation-card svelte-d7ctnn">`;
+  $$payload.out += `<section${attr_class("invitation-section svelte-7fc5v9", void 0, { "lifted": lifted, "opening": opening, "opened": opened })}><button class="envelope-button svelte-7fc5v9" type="button" aria-label="Open Evelin and Matthew's wedding invitation"${attr("aria-expanded", opened)}><div class="envelope-shadow svelte-7fc5v9"></div> <div class="envelope svelte-7fc5v9"><div class="envelope-back svelte-7fc5v9"></div> <div class="invitation-card svelte-7fc5v9">`;
   if (guestName) {
     $$payload.out += "<!--[-->";
-    $$payload.out += `<span class="guest-name svelte-d7ctnn">${escape_html(guestName)}</span>`;
+    $$payload.out += `<span class="guest-name svelte-7fc5v9">${escape_html(guestName)}</span>`;
   } else {
     $$payload.out += "<!--[!-->";
   }
   $$payload.out += `<!--]--> `;
   if (guestAllowed) {
     $$payload.out += "<!--[-->";
-    $$payload.out += `<span class="small-text svelte-d7ctnn">The Wedding of</span> <strong class="svelte-d7ctnn">Evelin <i class="svelte-d7ctnn">&amp;</i> Matthew</strong> <span class="date svelte-d7ctnn">November 7, 2026</span> <span class="location svelte-d7ctnn">Hidalgo, Mexico</span>`;
+    $$payload.out += `<span class="small-text svelte-7fc5v9">The Wedding of</span> <strong class="svelte-7fc5v9">Evelin <i class="svelte-7fc5v9">&amp;</i> Matthew</strong> <span class="date svelte-7fc5v9">November 7, 2026</span> <span class="location svelte-7fc5v9">Hidalgo, Mexico</span>`;
   } else {
     $$payload.out += "<!--[!-->";
-    $$payload.out += `<strong class="uninvited-title svelte-d7ctnn">Not on the list</strong>`;
+    $$payload.out += `<strong class="uninvited-title svelte-7fc5v9">Not on the list</strong>`;
   }
-  $$payload.out += `<!--]--></div> <div class="flap svelte-d7ctnn"></div> <div class="front-pocket svelte-d7ctnn"></div> <div class="seal svelte-d7ctnn"><span class="svelte-d7ctnn">E</span> <i class="svelte-d7ctnn">&amp;</i> <span class="svelte-d7ctnn">M</span></div></div></button> <button type="button" class="open-label svelte-d7ctnn"${attr("disabled", opened, true)}></button></section>`;
-  bind_props($$props, { guestAllowed, guestName, compact });
+  $$payload.out += `<!--]--></div> <div class="flap svelte-7fc5v9"></div> <div class="front-pocket svelte-7fc5v9"></div> <div class="seal svelte-7fc5v9"><span class="svelte-7fc5v9">E</span> <i class="svelte-7fc5v9">&amp;</i> <span class="svelte-7fc5v9">M</span></div></div></button> <button type="button" class="open-label svelte-7fc5v9"${attr("disabled", opened, true)}></button></section>`;
+  bind_props($$props, { guestAllowed, guestName });
   pop();
 }
 function _page($$payload) {

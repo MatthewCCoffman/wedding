@@ -1,4 +1,5 @@
 import { b as pic3$1, a as pic2, p as pic1$1 } from "./4BD7C524-6896-4C3A-A4AC-1557A6950B22.js";
+import { r as registryImage } from "./918428E3-CCCC-4905-95CB-A9FF8F044545.js";
 const pic1 = "/_app/immutable/assets/062DAEB1-074F-4D90-B101-378E23FE0F8A.LaI1fBHD.jpeg";
 const pic3 = "/_app/immutable/assets/11012DCD-BDF0-4EAE-8233-7CF562139A6D.DV5UYR0E.jpeg";
 const pic4 = "/_app/immutable/assets/12E9999A-06D2-42C3-8B01-562FFA2FACB1.DFprikX8.jpeg";
@@ -16,7 +17,6 @@ const pic17 = "/_app/immutable/assets/78E1B803-50EE-44A6-BFAF-478F2D6B1F2A.CDi8N
 const pic18 = "/_app/immutable/assets/791C5E6F-B963-4CD1-8ABD-E6FE065F84C6.BY2gVuiL.jpeg";
 const pic19 = "/_app/immutable/assets/8508B2FA-66C4-480F-8B21-6D1E1999BCAB.Dm9g5WOv.jpeg";
 const pic20 = "/_app/immutable/assets/8D92EEB7-1E64-4396-9BEC-02FCEB206856.dYuglF3f.jpeg";
-const pic21 = "/_app/immutable/assets/918428E3-CCCC-4905-95CB-A9FF8F044545.C8gNPoYp.jpeg";
 const pic22 = "/_app/immutable/assets/9FABAAFB-583D-4718-A068-56CD09104678.D_0PosBa.jpeg";
 const pic23 = "/_app/immutable/assets/A5188E9E-D6CB-43FE-BB90-D4A2E77B9C37.Cr-cIq1H.jpeg";
 const pic24 = "/_app/immutable/assets/B5493053-FA34-437B-815D-72EA629C8456.Bo0rttsM.jpeg";
@@ -45,7 +45,7 @@ const weddingPhotos = [
   pic18,
   pic19,
   pic20,
-  pic21,
+  registryImage,
   pic22,
   pic23,
   pic24,

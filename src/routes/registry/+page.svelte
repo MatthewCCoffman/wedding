@@ -8,6 +8,8 @@
 </svelte:head>
 
 <script>
+  import registryImage from '$lib/images/918428E3-CCCC-4905-95CB-A9FF8F044545.jpeg';
+
   export let language = 'en';
 
   const registryUrl =
@@ -47,7 +49,7 @@
   <div class="photo-column">
     <div class="photo-frame">
       <img
-        src="src/lib/images/918428E3-CCCC-4905-95CB-A9FF8F044545.jpeg"
+        src={registryImage}
         alt={copy.imageAlt}
         loading="lazy"
       />
