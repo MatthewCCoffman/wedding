@@ -59,7 +59,7 @@
 
 <style>
 	.countdown {
-		font-family: var(--font-accent);
+		font-family: var(--font-heading);
 		color: var(--text-color);
 		background: transparent;
 		padding: 1.5rem 1rem;
@@ -86,62 +86,25 @@
 		transition: var(--transition-smooth);
 	}
 
-	.unit:hover .circle {
-		transform: scale(1.08);
-		border-color: var(--accent-green-dark);
-		box-shadow: 0 8px 25px rgba(139, 155, 126, 0.3);
-	}
-
 	.circle {
-		background: transparent;
-		border: 1px solid var(--accent-green);
-		color: var(--accent-green-dark);
-		border-radius: 0;
-		width: 85px;
-		height: 85px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 2rem;
-		font-weight: 400;
-		margin: 0 auto 0.75rem auto;
-		box-shadow: none;
-		transition: var(--transition-smooth);
-		position: relative;
-	}
-
-	.circle::before {
-		content: '';
-		position: absolute;
-		inset: -5px;
-		border-radius: 50%;
-		padding: 2px;
-		background: linear-gradient(135deg, var(--accent-green), var(--accent-green-light));
-		-webkit-mask: 
-			linear-gradient(#fff 0 0) content-box, 
-			linear-gradient(#fff 0 0);
-		-webkit-mask-composite: xor;
-		mask-composite: exclude;
-		opacity: 0;
-		transition: var(--transition-smooth);
-	}
-
-	.unit:hover .circle::before {
-		opacity: 0.4;
+	font-family: var(--font-heading);
+	font-size: 2.5rem;
+	font-weight: 300;
+	color: var(--heading-color);
 	}
 
 	.label {
-		font-size: 0.9rem;
-		text-transform: uppercase;
-		letter-spacing: 0.15em;
-		color: var(--text-light);
-		font-weight: 500;
+	font-family: var(--font-heading);
+	font-size: 1rem;
+	font-weight: 400;
+	letter-spacing: 0.15em;
+	color: var(--heading-color);
 	}
 
 	.separator {
-		font-size: 2.2rem;
-		color: var(--accent-green);
-		font-weight: 300;
+	font-family: var(--font-heading);
+	font-weight: 300;
+	color: var(--heading-color);
 	}
 
 	@media (max-width: 600px) {

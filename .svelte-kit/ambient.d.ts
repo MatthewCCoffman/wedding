@@ -26,7 +26,6 @@
  * ```
  */
 declare module '$env/static/private' {
-	export const AI_AGENT: string;
 	export const ALLUSERSPROFILE: string;
 	export const APPDATA: string;
 	export const CHROME_CRASHPAD_PIPE_NAME: string;
@@ -36,17 +35,12 @@ declare module '$env/static/private' {
 	export const CommonProgramW6432: string;
 	export const COMPUTERNAME: string;
 	export const ComSpec: string;
-	export const COPILOT_AGENT: string;
 	export const COPILOT_DEBUG_NONCE: string;
-	export const DEBIAN_FRONTEND: string;
 	export const DriverData: string;
 	export const EDITOR: string;
 	export const EFC_4432_1592913036: string;
 	export const EFC_4432_4126798990: string;
 	export const GIT_ASKPASS: string;
-	export const GIT_EDITOR: string;
-	export const GIT_MERGE_AUTOEDIT: string;
-	export const GIT_PAGER: string;
 	export const HOME: string;
 	export const HOMEDRIVE: string;
 	export const HOMEPATH: string;
@@ -140,7 +134,6 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
-		AI_AGENT: string;
 		ALLUSERSPROFILE: string;
 		APPDATA: string;
 		CHROME_CRASHPAD_PIPE_NAME: string;
@@ -150,17 +143,12 @@ declare module '$env/dynamic/private' {
 		CommonProgramW6432: string;
 		COMPUTERNAME: string;
 		ComSpec: string;
-		COPILOT_AGENT: string;
 		COPILOT_DEBUG_NONCE: string;
-		DEBIAN_FRONTEND: string;
 		DriverData: string;
 		EDITOR: string;
 		EFC_4432_1592913036: string;
 		EFC_4432_4126798990: string;
 		GIT_ASKPASS: string;
-		GIT_EDITOR: string;
-		GIT_MERGE_AUTOEDIT: string;
-		GIT_PAGER: string;
 		HOME: string;
 		HOMEDRIVE: string;
 		HOMEPATH: string;
