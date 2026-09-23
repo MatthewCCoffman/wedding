@@ -26,7 +26,7 @@ function Countdown($$payload, $$props) {
     }
   };
   translatedLabels = labels[language2] || labels.en;
-  $$payload.out += `<div class="countdown svelte-1y1eyyb"><div class="unit svelte-1y1eyyb"><div class="circle svelte-1y1eyyb">${escape_html(timeRemaining.days)}</div> <div class="label svelte-1y1eyyb">${escape_html(translatedLabels.days)}</div></div> <div class="separator svelte-1y1eyyb">:</div> <div class="unit svelte-1y1eyyb"><div class="circle svelte-1y1eyyb">${escape_html(timeRemaining.hours)}</div> <div class="label svelte-1y1eyyb">${escape_html(translatedLabels.hours)}</div></div> <div class="separator svelte-1y1eyyb">:</div> <div class="unit svelte-1y1eyyb"><div class="circle svelte-1y1eyyb">${escape_html(timeRemaining.minutes)}</div> <div class="label svelte-1y1eyyb">${escape_html(translatedLabels.minutes)}</div></div> <div class="separator svelte-1y1eyyb">:</div> <div class="unit svelte-1y1eyyb"><div class="circle svelte-1y1eyyb">${escape_html(timeRemaining.seconds)}</div> <div class="label svelte-1y1eyyb">${escape_html(translatedLabels.seconds)}</div></div></div>`;
+  $$payload.out += `<div class="countdown svelte-e7021m"><div class="unit svelte-e7021m"><div class="circle svelte-e7021m">${escape_html(timeRemaining.days)}</div> <div class="label svelte-e7021m">${escape_html(translatedLabels.days)}</div></div> <div class="separator svelte-e7021m">:</div> <div class="unit svelte-e7021m"><div class="circle svelte-e7021m">${escape_html(timeRemaining.hours)}</div> <div class="label svelte-e7021m">${escape_html(translatedLabels.hours)}</div></div> <div class="separator svelte-e7021m">:</div> <div class="unit svelte-e7021m"><div class="circle svelte-e7021m">${escape_html(timeRemaining.minutes)}</div> <div class="label svelte-e7021m">${escape_html(translatedLabels.minutes)}</div></div> <div class="separator svelte-e7021m">:</div> <div class="unit svelte-e7021m"><div class="circle svelte-e7021m">${escape_html(timeRemaining.seconds)}</div> <div class="label svelte-e7021m">${escape_html(translatedLabels.seconds)}</div></div></div>`;
   bind_props($$props, { language: language2 });
   pop();
 }
@@ -46,19 +46,21 @@ function _page($$payload) {
     $$payload2.title = `<title>${escape_html(store_get($$store_subs ??= {}, "$language", language) === "en" ? "Evelin & Matthew" : "Evelin y Matthew")}</title>`;
     $$payload2.out += `<meta name="description"${attr("content", store_get($$store_subs ??= {}, "$language", language) === "en" ? "wedding2026" : "boda2026")}/>`;
   });
-  $$payload.out += `<div class="page-header-image svelte-2prg98"><video class="hero-video svelte-2prg98"${attr("src", meadowVideo)} autoplay muted loop playsinline${attr("aria-label", currentLanguage.alt)}></video> <div class="hero-caption svelte-2prg98"><span class="svelte-2prg98">${escape_html(store_get($$store_subs ??= {}, "$language", language) === "en" ? "The Wedding of" : "La Boda de")}</span> <strong class="svelte-2prg98">Evelin <em class="svelte-2prg98">&amp;</em> Matthew</strong> <span class="svelte-2prg98">${escape_html(store_get($$store_subs ??= {}, "$language", language) === "en" ? "November 07, 2026" : "07 de noviembre de 2026")} <em class="detail-separator svelte-2prg98">•</em> ${escape_html(store_get($$store_subs ??= {}, "$language", language) === "en" ? "Hidalgo, Mexico" : "Hidalgo, México")}</span></div></div> <div class="page-title svelte-2prg98"><div class="svelte-2prg98">${escape_html(currentLanguage.heading)}</div></div> `;
+  $$payload.out += `<div class="page-header-image svelte-1ygrc9s"><video class="hero-video svelte-1ygrc9s"${attr("src", meadowVideo)} autoplay muted loop playsinline${attr("aria-label", currentLanguage.alt)}></video> <div class="hero-caption svelte-1ygrc9s"><span class="svelte-1ygrc9s">${escape_html(store_get($$store_subs ??= {}, "$language", language) === "en" ? "The Wedding of" : "La Boda de")}</span> <strong class="svelte-1ygrc9s">Evelin <em class="svelte-1ygrc9s">&amp;</em> Matthew</strong> <span class="svelte-1ygrc9s">${escape_html(store_get($$store_subs ??= {}, "$language", language) === "en" ? "November 07, 2026" : "07 de noviembre de 2026")} <em class="detail-separator svelte-1ygrc9s">•</em> ${escape_html(store_get($$store_subs ??= {}, "$language", language) === "en" ? "Hidalgo, Mexico" : "Hidalgo, México")}</span></div></div> <div class="page-title svelte-1ygrc9s"><div class="svelte-1ygrc9s">${escape_html(currentLanguage.heading)}</div></div> `;
   Countdown($$payload, {
     language: store_get($$store_subs ??= {}, "$language", language)
   });
-  $$payload.out += `<!----> <section id="story" class="scroll-section svelte-2prg98">`;
+  $$payload.out += `<!----> <section id="story" class="scroll-section svelte-1ygrc9s">`;
   _page$1($$payload);
-  $$payload.out += `<!----></section> <section id="photos" class="scroll-section svelte-2prg98">`;
+  $$payload.out += `<!----></section> <section id="photos" class="scroll-section svelte-1ygrc9s">`;
   _page$2($$payload);
-  $$payload.out += `<!----></section> <section id="venue" class="scroll-section svelte-2prg98">`;
+  $$payload.out += `<!----></section> <section id="venue" class="scroll-section svelte-1ygrc9s">`;
   _page$3($$payload);
-  $$payload.out += `<!----></section> <section id="registry" class="scroll-section svelte-2prg98">`;
-  _page$4($$payload);
-  $$payload.out += `<!----></section> <section id="rsvp" class="scroll-section svelte-2prg98">`;
+  $$payload.out += `<!----></section> <section id="registry" class="scroll-section svelte-1ygrc9s">`;
+  _page$4($$payload, {
+    language: store_get($$store_subs ??= {}, "$language", language)
+  });
+  $$payload.out += `<!----></section> <section id="rsvp" class="scroll-section svelte-1ygrc9s">`;
   _page$5($$payload);
   $$payload.out += `<!----></section>`;
   if ($$store_subs) unsubscribe_stores($$store_subs);

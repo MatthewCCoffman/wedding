@@ -54,7 +54,7 @@
 </section>
 
 <section id="registry" class="scroll-section">
-	<RegistryPage />
+	<RegistryPage language={$language} />
 </section>
 
 <section id="rsvp" class="scroll-section">
@@ -176,8 +176,10 @@
 	}
 
 	.page-header-image {
-		margin-top: 1rem;
-		margin-bottom: 1.5rem;
+		margin-top: 0;
+		margin-bottom: 0;
+		height: 100svh;
+		min-height: 100svh;
 	}
 
 	.page-header-image::before {
@@ -186,7 +188,8 @@
 
 	.hero-video {
 		border-radius: 0;
-		height: min(74svh, 680px);
+		height: 100%;
+		min-height: 100svh;
 		object-fit: cover;
 		object-position: center center;
 	}

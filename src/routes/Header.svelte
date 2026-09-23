@@ -280,7 +280,16 @@
 
 /* Mobile adjustments: smaller spacing and font */
 @media only screen and (max-width: 500px) {
+	.mobile {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 20;
+		width: 100%;
+	}
+
 	.navbar-container {
+		position: relative;
 		padding: 1.25rem 1rem 0;
 		align-items: flex-start;
 	}
@@ -289,11 +298,20 @@
 		display: flex;
 	}
 
+	.hamburger .bar {
+		background-color: #fff;
+		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+	}
+
 	nav {
+		position: absolute;
+		top: 100%;
+		left: 0;
 		display: none;
 		flex-direction: column;
 		width: 100%;
-		background: rgba(253, 251, 247, 0.97);
+		box-sizing: border-box;
+		background: rgba(20, 30, 25, 0.78);
 		backdrop-filter: blur(10px);
 		align-items: center;
 		padding: 1.5rem 0;
@@ -323,6 +341,19 @@
 
 	nav li a {
 		font-size: 1.2rem;
+		color: #fff;
+		text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+	}
+
+	.language-toggle button {
+		color: #fff;
+		border-color: rgba(255, 255, 255, 0.75);
+		text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+	}
+
+	.language-toggle button.active {
+		background: rgba(255, 255, 255, 0.2);
+		border-color: #fff;
 	}
 
 	.logo-wrapper img {

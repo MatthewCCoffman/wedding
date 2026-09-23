@@ -1,9 +1,13 @@
-import { D as store_get, N as ensure_array_like, F as unsubscribe_stores } from "../../../chunks/index2.js";
+import { D as store_get, N as ensure_array_like, O as attr_style, E as attr_class, F as unsubscribe_stores, B as pop, z as push } from "../../../chunks/index2.js";
 import { l as language } from "../../../chunks/language.js";
+import { w as weddingPhotos } from "../../../chunks/weddingPhotos.js";
 import { e as escape_html, a as attr } from "../../../chunks/attributes.js";
-function _page($$payload) {
+function _page($$payload, $$props) {
+  push();
   var $$store_subs;
   let story;
+  let activeIndex = 0;
+  const storyPhotoIndexes = [21, 1, 2, 3, 23];
   const storyContent = {
     en: {
       title: "OUR STORY",
@@ -68,13 +72,20 @@ function _page($$payload) {
   };
   story = storyContent[store_get($$store_subs ??= {}, "$language", language)];
   const each_array = ensure_array_like(story.entries);
-  $$payload.out += `<div class="page-content svelte-zre082"><div class="page-title svelte-zre082"><div class="svelte-zre082">${escape_html(story.title)}</div></div> <!--[-->`;
-  for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-    let entry = each_array[$$index];
-    $$payload.out += `<div class="timeline-section svelte-zre082"${attr("data-date", entry.date)}><div class="section-header svelte-zre082">${escape_html(entry.header)}</div> <div class="section-body svelte-zre082">${escape_html(entry.body)}</div></div>`;
+  const each_array_1 = ensure_array_like(story.entries);
+  $$payload.out += `<div class="page-content svelte-1nks18q"><div class="page-title svelte-1nks18q"><div class="svelte-1nks18q">${escape_html(story.title)}</div></div> <div class="story-carousel svelte-1nks18q"><div class="story-track svelte-1nks18q"${attr_style(`--active-index: ${activeIndex}`)}><!--[-->`;
+  for (let index = 0, $$length = each_array.length; index < $$length; index++) {
+    let entry = each_array[index];
+    $$payload.out += `<div class="timeline-section svelte-1nks18q"><div class="story-copy svelte-1nks18q"><div class="section-header svelte-1nks18q">${escape_html(entry.header)}</div> <div class="section-body svelte-1nks18q">${escape_html(entry.body)}</div></div> <div class="story-photo svelte-1nks18q"><img${attr("src", weddingPhotos[storyPhotoIndexes[index]])}${attr("alt", entry.header)} loading="lazy" class="svelte-1nks18q"/></div></div>`;
   }
-  $$payload.out += `<!--]--></div>`;
+  $$payload.out += `<!--]--></div></div> <div class="carousel-controls svelte-1nks18q" aria-label="Story navigation"><button type="button"${attr("disabled", activeIndex === 0, true)} aria-label="Previous story" class="svelte-1nks18q">←</button> <div class="carousel-dots svelte-1nks18q"><!--[-->`;
+  for (let index = 0, $$length = each_array_1.length; index < $$length; index++) {
+    each_array_1[index];
+    $$payload.out += `<button type="button"${attr("aria-label", `Go to story ${index + 1}`)}${attr("aria-current", activeIndex === index ? "step" : void 0)}${attr_class("svelte-1nks18q", void 0, { "active": activeIndex === index })}></button>`;
+  }
+  $$payload.out += `<!--]--></div> <button type="button"${attr("disabled", activeIndex === story.entries.length - 1, true)} aria-label="Next story" class="svelte-1nks18q">→</button></div></div>`;
   if ($$store_subs) unsubscribe_stores($$store_subs);
+  pop();
 }
 export {
   _page as default

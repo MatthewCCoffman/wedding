@@ -1,5 +1,44 @@
 <script lang="ts">
   import { language } from '$lib/stores/language';
+  import { weddingPhotos } from '$lib/images/weddingPhotos';
+
+  const reveal = (node: HTMLElement) => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        node.classList.add('is-visible');
+        observer.unobserve(node);
+      }
+    }, { threshold: 0.2 });
+
+    observer.observe(node);
+
+    return {
+      destroy() {
+        observer.disconnect();
+      }
+    };
+  };
+
+  let activeIndex = 0;
+  let touchStartX = 0;
+  const storyPhotoIndexes = [21, 1, 2, 3, 23];
+
+  function goToStory(index: number) {
+    activeIndex = Math.max(0, Math.min(index, story.entries.length - 1));
+  }
+
+  function handleTouchStart(event: TouchEvent) {
+    touchStartX = event.touches[0]?.clientX ?? 0;
+  }
+
+  function handleTouchEnd(event: TouchEvent) {
+    const touchEndX = event.changedTouches[0]?.clientX ?? touchStartX;
+    const swipeDistance = touchEndX - touchStartX;
+
+    if (Math.abs(swipeDistance) >= 50) {
+      goToStory(activeIndex + (swipeDistance < 0 ? 1 : -1));
+    }
+  }
 
   const storyContent = {
     en: {
@@ -69,16 +108,48 @@
 
 <div class="page-content">
     <div class="page-title"><div>{story.title}</div></div>
-    {#each story.entries as entry}
-      <div class="timeline-section" data-date={entry.date}>
-        <div class="section-header">
-            {entry.header}
-        </div>
-        <div class="section-body">
-            {entry.body}
-        </div>
+    <div
+      class="story-carousel"
+      ontouchstart={handleTouchStart}
+      ontouchend={handleTouchEnd}
+    >
+      <div class="story-track" style={`--active-index: ${activeIndex}`}>
+        {#each story.entries as entry, index}
+          <div class="timeline-section" use:reveal>
+            <div class="story-copy">
+              <div class="section-header">
+                  {entry.header}
+              </div>
+              <div class="section-body">
+                  {entry.body}
+              </div>
+            </div>
+            <div class="story-photo">
+              <img src={weddingPhotos[storyPhotoIndexes[index]]} alt={entry.header} loading="lazy" />
+            </div>
+          </div>
+        {/each}
       </div>
-    {/each}
+    </div>
+    <div class="carousel-controls" aria-label="Story navigation">
+      <button type="button" onclick={() => goToStory(activeIndex - 1)} disabled={activeIndex === 0} aria-label="Previous story">
+        &#8592;
+      </button>
+      <div class="carousel-dots">
+        {#each story.entries as entry, index}
+          <button
+            type="button"
+            class:active={activeIndex === index}
+            onclick={() => goToStory(index)}
+            aria-label={`Go to story ${index + 1}`}
+            aria-current={activeIndex === index ? 'step' : undefined}
+          ></button>
+        {/each}
+      </div>
+      <button type="button" onclick={() => goToStory(activeIndex + 1)} disabled={activeIndex === story.entries.length - 1} aria-label="Next story">
+        &#8594;
+      </button>
+    </div>
 </div>
 
 <style>
@@ -117,25 +188,77 @@
 .page-content {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 4rem;
   padding: 0 1rem 3rem;
   margin: 0 auto;
   font-family: 'Georgia', serif;
-  text-align: center;
-  width: 50%;
+  width: min(90%, 72rem);
   color: #4a3c31; /* elegant dark brown */
 }
 
 /* Timeline Sections */
 .timeline-section {
-  padding: 2rem;
-  background: var(--background-color);
-  border-radius: 1rem;
-  box-shadow: 0 6px 15px rgba(211, 211, 211, 0.4);
-  transition: background 0.3s ease;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.9fr);
+  align-items: center;
+  gap: clamp(2rem, 7vw, 6rem);
+  min-height: 22rem;
+  padding: 2rem 0;
+  margin: 0;
+  border: 0 !important;
+  border-radius: 0;
+  position: relative;
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
-.timeline-section:hover {
-  background: var(--background-color);
+
+.story-carousel {
+  width: 100%;
+}
+
+.story-track {
+  display: contents;
+}
+
+.carousel-controls {
+  display: none;
+}
+
+.timeline-section::before {
+  display: none;
+}
+
+.timeline-section:global(.is-visible) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story-copy {
+  text-align: left;
+  transform: translateX(-2.5rem);
+  transition: transform 0.8s ease 0.1s;
+}
+
+.story-photo {
+  width: min(100%, 22rem);
+  justify-self: center;
+  transform: translateX(2.5rem);
+  transition: transform 0.8s ease 0.2s;
+}
+
+.timeline-section:global(.is-visible) .story-copy,
+.timeline-section:global(.is-visible) .story-photo {
+  transform: translateX(0);
+}
+
+.story-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 0.25rem;
+  box-shadow: 0 1rem 2rem rgba(40, 53, 45, 0.14);
 }
 
 /* Section Header */
@@ -143,6 +266,7 @@
   font-size: 1.4rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
+  margin-top: 0 !important;
   color:rgb(31, 31, 31); /* muted rose brown */
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -158,32 +282,130 @@
   font-family: 'Georgia', serif;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .timeline-section,
+  .story-copy,
+  .story-photo {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Mobile Adjustments */
 @media only screen and (max-width: 500px) {
   /* Page Content */
   .page-content {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2rem;
     margin: 0 auto;
     font-family: 'Georgia', serif;
     text-align: center;
     width: 85%;
-    margin-left: 3.5%;
     color: #4a3c31; /* elegant dark brown */
   }
 
   .timeline-section {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    min-height: 0;
     padding: 1.5rem;
+    flex: 0 0 100%;
+    box-sizing: border-box;
+  }
+
+  .story-carousel {
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+
+  .story-track {
+    display: flex;
+    transform: translateX(calc(var(--active-index) * -100%));
+    transition: transform 0.45s ease;
+  }
+
+  .story-track .timeline-section {
+    opacity: 1;
+    transform: none;
+  }
+
+  .story-track .story-copy,
+  .story-track .story-photo {
+    transform: none;
+    transition: none;
+  }
+
+  .story-track .story-photo {
+    width: min(100%, 15rem);
+  }
+
+  .carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .carousel-controls > button {
+    display: grid;
+    width: 2.5rem;
+    height: 2.5rem;
+    place-items: center;
+    border: 1px solid var(--accent-green);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--accent-green-dark);
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+
+  .carousel-controls > button:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  .carousel-dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .carousel-dots button {
+    width: 0.45rem;
+    height: 0.45rem;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--accent-green-light);
+    cursor: pointer;
+  }
+
+  .carousel-dots button.active {
+    background: var(--accent-green-dark);
+    transform: scale(1.35);
+  }
+
+  .story-copy {
+    text-align: center;
+  }
+
+  .story-photo {
+    order: 2;
   }
 
   .section-header {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    line-height: 1.25;
     text-align: center;
   }
 
   .section-body {
-    font-size: 1rem;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    overflow-wrap: break-word;
   }
 
   .timeline-section::before {

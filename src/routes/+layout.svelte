@@ -128,7 +128,7 @@
 
 	@media (max-width: 768px) {
 		main {
-			padding: 1.5rem 1rem;
+			padding: 0 1rem 1.5rem;
 		}
 
 		:global(.image-row) {

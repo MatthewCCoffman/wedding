@@ -1,225 +1,329 @@
-<script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
- import { language } from '$lib/stores/language';
+<svelte:head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
 
- const translations = {
-  en: {
-   title: 'Wedding Registry',
-   intro: [
-	'Your presence at our wedding is the greatest gift of all.',
-	"However, if you wish to honor us with a gift, we've created a registry for your convenience."
-   ],
-   button: 'View Our Registry'
-  },
-  es: {
-   title: 'Mesa de Regalos',
-   intro: [
-	'Su presencia en nuestra boda es el mejor regalo de todos.',
-	'Sin embargo, si desea honrarnos con un regalo, hemos creado una mesa de regalos para su comodidad.'
-   ],
-   button: 'Ver Nuestra Mesa de Regalos'
-  }
- };
+<script>
+  export let language = 'en';
 
- $: currentTranslations = translations[$language];
+  const registryUrl =
+    'https://www.zola.com/registry/evelinandmatt2025';
 
-	function removeZolaInjectedNodes() {
-		if (typeof document === 'undefined') return;
-		// remove any anchors or placeholders
-		document.querySelectorAll('.zola-registry-embed, [data-registry-key]').forEach(n => n.remove());
-		// remove the widget loader script if present
-		const script = document.getElementById('zola-wjs');
-		if (script && script.parentNode) script.parentNode.removeChild(script);
-		// remove any iframes or nodes that reference zola
-		document.querySelectorAll('iframe').forEach((f: HTMLIFrameElement) => {
-			try {
-				if (f.src && f.src.includes('zola.com')) f.remove();
-			} catch (e) {
-				// ignore cross-origin access
-			}
-		});
-		document.querySelectorAll('[id*="zola"], [class*="zola"]').forEach(n => n.remove());
-	}
+  const translations = {
+    en: {
+      label: 'Wedding Registry',
+      headingFirst: '',
+      headingEmphasis: '',
+      message:
+        'Celebrating with you in Hidalgo is the greatest gift we could receive.',
+      details:
+        'For those who have asked, we have selected a few things for the home and life we are building together.',
+      button: 'View Our Registry',
+      note: 'Registry hosted by Zola',
+      imageAlt: 'Evelin and Matthew'
+    },
+    es: {
+      label: 'Mesa de Regalos',
+      headingFirst: 'Un regalo para nuestro',
+      headingEmphasis: 'próximo capítulo.',
+      message:
+        'Celebrar con ustedes en Hidalgo es el mejor regalo que podríamos recibir.',
+      details:
+        'Para quienes nos han preguntado, hemos elegido algunas cosas para el hogar y la vida que estamos construyendo juntos.',
+      button: 'Ver Nuestra Mesa',
+      note: 'Mesa de regalos en Zola',
+      imageAlt: 'Evelin y Matthew'
+    }
+  };
 
-	onMount(() => {
-		// ensure the zola script is loaded client-side
-		if (!document.getElementById('zola-wjs')) {
-			const s = document.createElement('script');
-			s.src = 'https://widget.zola.com/js/widget.js';
-			s.async = true;
-			s.id = 'zola-wjs';
-			document.head.appendChild(s);
-		}
-	});
-
-	onDestroy(() => {
-		if (typeof document === 'undefined') return;
-		// cleanup any DOM the widget injected so it doesn't persist after navigation
-		removeZolaInjectedNodes();
-	});
+  $: copy = translations[language] ?? translations.en;
 </script>
 
-<div class="registry-page">
-	<div class="page-title">
-		<div>{currentTranslations.title}</div>
-	</div>
+<div class="registry-section">
+  <div class="photo-column">
+    <div class="photo-frame">
+      <img
+        src="src/lib/images/918428E3-CCCC-4905-95CB-A9FF8F044545.jpeg"
+        alt={copy.imageAlt}
+        loading="lazy"
+      />
 
-	<div class="registry-intro">
-		<p>{currentTranslations.intro[0]}</p>
-		<p>{currentTranslations.intro[1]}</p>
-	</div>
+      <span class="section-number" aria-hidden="true">05</span>
+    </div>
+  </div>
 
-	<div class="registry-container">
-		<a
-			class="zola-registry-embed registry-button"
-			href="https://www.zola.com/registry/evelinandmatt2025"
-			data-registry-key="evelinandmatt2025"
-			on:click|preventDefault={() => window.open('https://www.zola.com/registry/evelinandmatt2025', '_blank', 'noopener,noreferrer')}
-			rel="noopener noreferrer"
-		>
-			<span class="button-text">{currentTranslations.button}</span>
-			<span class="button-icon">→</span>
-		</a>
-	</div>
+  <div class="registry-content">
+
+
+    <p class="lead">{copy.message}</p>
+
+    <p class="details">{copy.details}
+		
+	</p>
+
+    <a
+      class="registry-button"
+      href={registryUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {copy.button}
+      <span aria-hidden="true">↗</span>
+    </a>
+
+  </div>
 </div>
 
 <style>
-	.registry-page {
-		max-width: 800px;
-		margin: 0 auto;
-		padding: 2rem;
-	}
+  .registry-section {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.9fr) minmax(380px, 1.1fr);
+    align-items: center;
+    gap: clamp(4rem, 9vw, 8rem);
+    width: min(calc(100% - 3rem), 1100px);
+    margin: 0 auto;
+    padding: clamp(6rem, 11vw, 10rem) 0;
+  }
 
-	.page-title {
-		text-align: center;
-		margin-bottom: 3rem;
-	}
+  /* Photograph */
 
-	.page-title div {
-		font-family: var(--font-heading);
-		font-size: 3rem;
-		font-weight: 300;
-		color: var(--heading-color);
-		letter-spacing: 0.15em;
-		text-transform: uppercase;
-		position: relative;
-		display: inline-block;
-		width: 100%;
-	}
+  .photo-column {
+    padding: 1.25rem 0 0 1.25rem;
+  }
 
-	.page-title div::after {
-		content: '';
-		position: absolute;
-		bottom: -15px;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 100px;
-		height: 2px;
-		background: linear-gradient(90deg, 
-			transparent, 
-			var(--accent-color), 
-			transparent);
-	}
+  .photo-frame {
+    position: relative;
+    max-width: 430px;
+  }
 
-	.registry-intro {
-		text-align: center;
-		margin: 3rem auto;
-		max-width: 600px;
-	}
+  .photo-frame::before {
+    position: absolute;
+    top: -1.25rem;
+    left: -1.25rem;
+    width: 100%;
+    height: 100%;
+    content: "";
+    border: 1px solid rgba(165, 108, 82, 0.55);
+  }
 
-	.registry-intro p {
-		font-family: 'Crimson Text', 'Georgia', serif;
-		font-size: 1.2rem;
-		line-height: 1.8;
-		color: var(--text-color);
-		margin-bottom: 1rem;
-	}
+  .photo-frame img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    filter: grayscale(100%) sepia(8%) contrast(92%);
+  }
 
-	.registry-container {
-		display: flex;
-		justify-content: center;
-		margin: 3rem 0;
-	}
+  .section-number {
+    position: absolute;
+    right: -1.5rem;
+    bottom: 2rem;
+    z-index: 2;
+    padding: 0.5rem 0;
+    font-family: "Bodoni Moda", serif;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    letter-spacing: 0.2em;
+    writing-mode: vertical-rl;
+  }
 
-	.registry-button {
-		display: inline-flex;
-		align-items: center;
-		gap: 1rem;
-		padding: 1.2rem 3rem;
-		font-family: var(--font-accent);
-		font-size: 1.1rem;
-		font-weight: 500;
-		text-transform: uppercase;
-		letter-spacing: 0.12em;
-		color: #ffffff;
-		background: linear-gradient(135deg, var(--accent-green), var(--accent-green-dark));
-		border: 2px solid var(--accent-green);
-		border-radius: 0.5rem;
-		text-decoration: none;
-		transition: var(--transition-smooth);
-		box-shadow: 0 10px 30px rgba(139, 155, 126, 0.25);
-		cursor: pointer;
-		position: relative;
-		overflow: hidden;
-	}
+  /* Written content */
 
-	.registry-button::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: -100%;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(90deg, 
-			transparent, 
-			rgba(255, 255, 255, 0.3), 
-			transparent);
-		transition: left 0.5s ease;
-	}
+  .registry-content {
+    max-width: 520px;
+  }
 
-	.registry-button:hover::before {
-		left: 100%;
-	}
+  .eyebrow {
+    margin: 0 0 1.5rem;
+    font-family: var(--font-accent);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
 
-	.registry-button:hover {
-		transform: translateY(-3px);
-		box-shadow: 0 15px 40px rgba(139, 155, 126, 0.35);
-		border-color: var(--accent-green-dark);
-	}
+  h2 {
+    margin: 0;
+    font-family: "Bodoni Moda", "Cormorant Garamond", serif;
+    font-size: clamp(3.5rem, 6vw, 5.75rem);
+    font-weight: 400;
+    line-height: 0.93;
+    color: var(--heading-color);
+    letter-spacing: -0.045em;
+  }
 
-	.button-text {
-		position: relative;
-		z-index: 1;
-	}
+  h2 em {
+    display: block;
+    padding-top: 0.15em;
+    font-weight: 400;
+    color: var(--accent-color);
+  }
 
-	.button-icon {
-		position: relative;
-		z-index: 1;
-		font-size: 1.5rem;
-		transition: transform 0.3s ease;
-	}
+  .ornament {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    width: 150px;
+    margin: 2.25rem 0;
+  }
 
-	.registry-button:hover .button-icon {
-		transform: translateX(5px);
-	}
+  .ornament span {
+    width: 58px;
+    height: 1px;
+    background: rgba(40, 53, 45, 0.35);
+  }
 
-	@media (max-width: 768px) {
-		.registry-page {
-			padding: 1.5rem 1rem;
-		}
+  .ornament i {
+    width: 5px;
+    height: 5px;
+    background: var(--accent-color);
+    transform: rotate(45deg);
+  }
 
-		.page-title div {
-			font-size: 2.2rem;
-		}
+  .lead {
+    max-width: 500px;
+    margin: 0 0 1rem;
+    font-family: "Bodoni Moda", "Cormorant Garamond", serif;
+    font-size: 1.45rem;
+    line-height: 1.5;
+    color: var(--heading-color);
+  }
 
-		.registry-intro p {
-			font-size: 1.1rem;
-			padding: 0 1rem;
-		}
+  .details {
+    max-width: 485px;
+    margin: 0 0 2.5rem;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-color);
+  }
 
-		.registry-button {
-			padding: 1rem 2rem;
-			font-size: 1rem;
-		}
-	}
+  /* Registry link */
+
+  .registry-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    min-width: 250px;
+    padding: 1rem 1.35rem;
+    font-family: var(--font-accent);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #f8f4ed;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: var(--heading-color);
+    border: 1px solid var(--heading-color);
+    transition:
+      color 200ms ease,
+      background 200ms ease,
+      transform 200ms ease;
+  }
+
+  .registry-button:hover {
+    color: var(--heading-color);
+    background: transparent;
+    transform: translateY(-2px);
+  }
+
+  .registry-button span {
+    font-size: 1rem;
+  }
+
+  .registry-note {
+    margin: 0.8rem 0 0;
+    font-family: var(--font-accent);
+    font-size: 0.62rem;
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .couple {
+    margin: 3.5rem 0 0;
+    font-family: "Bodoni Moda", "Cormorant Garamond", serif;
+    font-size: 1.25rem;
+    color: var(--heading-color);
+    letter-spacing: 0.04em;
+  }
+
+  .couple i {
+    padding: 0 0.35rem;
+    font-weight: 400;
+    color: var(--accent-color);
+  }
+
+  /* Mobile */
+
+  @media (max-width: 760px) {
+    .registry-section {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      width: min(calc(100% - 3rem), 560px);
+      padding: 5rem 0 6rem;
+    }
+
+    .photo-column {
+      padding: 1rem 1rem 0;
+    }
+
+    .photo-frame {
+      max-width: 390px;
+      margin: 0 auto;
+    }
+
+    .photo-frame::before {
+      top: -1rem;
+      left: -1rem;
+    }
+
+    .section-number {
+      right: -0.75rem;
+    }
+
+    .registry-content {
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin-bottom: 1.25rem;
+    }
+
+    h2 {
+      font-size: clamp(3.25rem, 14vw, 4.75rem);
+    }
+
+    .ornament {
+      justify-content: center;
+      margin: 2rem auto;
+    }
+
+    .lead,
+    .details {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .registry-button {
+      width: fit-content;
+      max-width: 100%;
+      margin: 0 auto;
+      justify-content: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .registry-button {
+      transition: none;
+    }
+  }
 </style>

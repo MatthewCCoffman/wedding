@@ -1,1 +1,0 @@
-import{w as a}from"./CYKRt97Q.js";const t=()=>localStorage.getItem("wedding-language")==="es"?"es":"en",n=a(t());n.subscribe(e=>{localStorage.setItem("wedding-language",e),document.documentElement.lang=e});export{n as l};
