@@ -6,7 +6,6 @@
   let name = "";
   let email = "";
   let attending = "Yes";
-  let guests = 1;
   let message = "";
 
   let submitted = false;
@@ -20,7 +19,6 @@
       requiredName: 'First and Last Name *',
       email: 'Email *',
       attend: 'Will you attend?',
-      guestCount: 'Number of Guests',
       notes: 'Message',
       submit: 'Submit RSVP',
       submitting: 'Submitting...',
@@ -32,7 +30,6 @@
       requiredName: 'Nombre y apellido *',
       email: 'Correo electrónico *',
       attend: '¿Asistirás?',
-      guestCount: 'Número de invitados',
       notes: 'Mensaje',
       submit: 'Enviar RSVP',
       submitting: 'Enviando...',
@@ -44,31 +41,6 @@
 
   const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfzvqKoq3ALSXlx3xfnOQ-NOefwrKyiXSOdHr28_SKJDvZQXQ/formResponse";
 
-  const guestList = [
-    { first: "Matthew", last: "Coffman" },
-    { first: "Evelin", last: "Fierro" },
-    { first: "Veronica", last: "Herrera" },
-    { first: "Isai", last: "Herrera" }
-  ];
-
-  function normalize(str) {
-    return str.toLowerCase().trim();
-  }
-
-  // function isOnGuestList(fullName) {
-  //   const parts = fullName.trim().split(/\s+/); // split by spaces
-  //   if (parts.length < 2) return false;
-
-  //   const [first, ...rest] = parts;
-  //   const last = rest.join(" "); // support compound last names
-
-  //   return guestList.some(
-  //     guest =>
-  //       normalize(guest.first) === normalize(first) &&
-  //       normalize(guest.last) === normalize(last)
-  //   );
-  // }
-
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -77,11 +49,6 @@
       return;
     }
 
-    // if (!isOnGuestList(name)) {
-    //   error = "We couldn’t find your name on the guest list. Please check the spelling or contact us.";
-    //   return;
-    // }
-
     error = "";
     loading = true;
 
@@ -89,8 +56,6 @@
     formData.append("entry.1219094019", name);
     formData.append("entry.53090044", email);
     formData.append("entry.420785019", attending);
-    // @ts-ignore
-    formData.append("entry.1616096004", guests);
     formData.append("entry.1236361144", message);
 
     try {
@@ -106,7 +71,6 @@
       name = "";
       email = "";
       attending = "Yes";
-      guests = 1;
       message = "";
     } catch (err) {
       console.error(err);
@@ -147,11 +111,6 @@
 					<option value="Yes">{$language === 'en' ? 'Yes' : 'Sí'}</option>
 					<option value="No">{$language === 'en' ? 'No' : 'No'}</option>
 				</select>
-			</label>
-
-			<label>
-				{currentText.guestCount}
-				<input type="number" min="1" bind:value={guests} />
 			</label>
 
 			<label>
