@@ -2,7 +2,7 @@
   // @ts-ignore
   import Carousel from './carousel.svelte';
   import { language } from '$lib/stores/language';
-  import { weddingPhotos } from '$lib/images/weddingPhotos';
+  import { photosPagePhotos } from '$lib/images/weddingPhotos';
 
   const pageTitles = {
     en: '',
@@ -17,5 +17,5 @@
 </div>
 
 <div class="page-content">
-  <Carousel photos={weddingPhotos} />
+  <Carousel photos={photosPagePhotos} />
 </div>

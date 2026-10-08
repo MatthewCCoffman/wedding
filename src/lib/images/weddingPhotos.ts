@@ -32,3 +32,9 @@ export const weddingPhotos = [
   pic11, pic12, pic13, pic14, pic15, pic16, pic17, pic18, pic19, pic20,
   pic21, pic22, pic23, pic24, pic25, pic26, pic27, pic28
 ];
+
+const photosPageExclusions = new Set([
+  pic7, pic11, pic14, pic15, pic16, pic19, pic25, pic26, pic27, pic28
+]);
+
+export const photosPagePhotos = weddingPhotos.filter(photo => !photosPageExclusions.has(photo));

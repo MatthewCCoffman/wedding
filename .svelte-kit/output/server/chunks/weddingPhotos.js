@@ -54,6 +54,20 @@ const weddingPhotos = [
   pic27,
   pic28
 ];
+const photosPageExclusions = /* @__PURE__ */ new Set([
+  pic7,
+  pic11,
+  pic14,
+  pic15,
+  pic16,
+  pic19,
+  pic25,
+  pic26,
+  pic27,
+  pic28
+]);
+const photosPagePhotos = weddingPhotos.filter((photo) => !photosPageExclusions.has(photo));
 export {
+  photosPagePhotos as p,
   weddingPhotos as w
 };

@@ -1,7 +1,7 @@
 import { J as fallback, N as ensure_array_like, E as attr_class, O as attr_style, K as bind_props, B as pop, z as push, P as stringify, D as store_get, F as unsubscribe_stores } from "../../../chunks/index2.js";
 import { a as attr, e as escape_html } from "../../../chunks/attributes.js";
 import { l as language } from "../../../chunks/language.js";
-import { w as weddingPhotos } from "../../../chunks/weddingPhotos.js";
+import { p as photosPagePhotos } from "../../../chunks/weddingPhotos.js";
 function Carousel($$payload, $$props) {
   push();
   let photos = fallback($$props["photos"], () => [], true);
@@ -54,7 +54,7 @@ function _page($$payload) {
   const pageTitles = { en: "", es: "" };
   pageTitle = pageTitles[store_get($$store_subs ??= {}, "$language", language)];
   $$payload.out += `<div class="page-title"><div>${escape_html(pageTitle)}</div></div> <div class="page-content">`;
-  Carousel($$payload, { photos: weddingPhotos });
+  Carousel($$payload, { photos: photosPagePhotos });
   $$payload.out += `<!----></div>`;
   if ($$store_subs) unsubscribe_stores($$store_subs);
 }
