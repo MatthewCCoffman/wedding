@@ -6,6 +6,7 @@
   let name = "";
   let email = "";
   let attending = "Yes";
+	let guests = 1;
   let message = "";
 
   let submitted = false;
@@ -19,6 +20,7 @@
       requiredName: 'First and Last Name *',
       email: 'Email *',
       attend: 'Will you attend?',
+	guestCount: 'Number of Guests *',
       notes: 'Message',
       submit: 'Submit RSVP',
       submitting: 'Submitting...',
@@ -30,6 +32,7 @@
       requiredName: 'Nombre y apellido *',
       email: 'Correo electrónico *',
       attend: '¿Asistirás?',
+	guestCount: 'Número de invitados *',
       notes: 'Mensaje',
       submit: 'Enviar RSVP',
       submitting: 'Enviando...',
@@ -56,6 +59,7 @@
     formData.append("entry.1219094019", name);
     formData.append("entry.53090044", email);
     formData.append("entry.420785019", attending);
+	formData.append("entry.1616096004", String(guests));
     formData.append("entry.1236361144", message);
 
     try {
@@ -71,6 +75,7 @@
       name = "";
       email = "";
       attending = "Yes";
+	guests = 1;
       message = "";
     } catch (err) {
       console.error(err);
@@ -111,6 +116,11 @@
 					<option value="Yes">{$language === 'en' ? 'Yes' : 'Sí'}</option>
 					<option value="No">{$language === 'en' ? 'No' : 'No'}</option>
 				</select>
+			</label>
+
+			<label>
+				{currentText.guestCount}
+				<input type="number" min="1" step="1" bind:value={guests} required />
 			</label>
 
 			<label>

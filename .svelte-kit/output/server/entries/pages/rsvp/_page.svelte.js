@@ -9,6 +9,7 @@ function _page($$payload, $$props) {
   let name = "";
   let email = "";
   let attending = "Yes";
+  let guests = 1;
   let message = "";
   let loading = false;
   const translations = {
@@ -18,6 +19,7 @@ function _page($$payload, $$props) {
       requiredName: "First and Last Name *",
       email: "Email *",
       attend: "Will you attend?",
+      guestCount: "Number of Guests *",
       notes: "Message",
       submit: "Submit RSVP",
       submitting: "Submitting...",
@@ -29,6 +31,7 @@ function _page($$payload, $$props) {
       requiredName: "Nombre y apellido *",
       email: "Correo electrónico *",
       attend: "¿Asistirás?",
+      guestCount: "Número de invitados *",
       notes: "Mensaje",
       submit: "Enviar RSVP",
       submitting: "Enviando...",
@@ -46,7 +49,7 @@ function _page($$payload, $$props) {
     $$payload.select_value = attending;
     $$payload.out += `<option value="Yes"${maybe_selected($$payload, "Yes")}>${escape_html(store_get($$store_subs ??= {}, "$language", language) === "en" ? "Yes" : "Sí")}</option><option value="No"${maybe_selected($$payload, "No")}>No</option>`;
     $$payload.select_value = void 0;
-    $$payload.out += `</select></label> <label class="svelte-17kygup">${escape_html(currentText.notes)} <textarea class="svelte-17kygup">`;
+    $$payload.out += `</select></label> <label class="svelte-17kygup">${escape_html(currentText.guestCount)} <input type="number" min="1" step="1"${attr("value", guests)} required class="svelte-17kygup"/></label> <label class="svelte-17kygup">${escape_html(currentText.notes)} <textarea class="svelte-17kygup">`;
     const $$body = escape_html(message);
     if ($$body) {
       $$payload.out += `${$$body}`;

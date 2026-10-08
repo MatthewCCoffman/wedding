@@ -1,1 +1,0 @@
-import{d as e}from"../chunks/D5509SCM.js";import{_ as a}from"../chunks/CAG4KLhY.js";const o=e,r=!0,n=Object.freeze(Object.defineProperty({__proto__:null,csr:o,prerender:r},Symbol.toStringTag,{value:"Module"}));export{a as component,n as universal};
